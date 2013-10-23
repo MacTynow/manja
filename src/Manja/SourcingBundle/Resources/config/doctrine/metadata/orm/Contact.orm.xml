@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Contact" table="CONTACT">
+    <id name="idcontact" type="integer" column="idCONTACT">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="title" type="string" column="Title" length="45" nullable="true"/>
+    <field name="firstname" type="string" column="Firstname" length="45" nullable="false"/>
+    <field name="middleName" type="string" column="Middle_name" length="45" nullable="true"/>
+    <field name="lastName" type="string" column="Last_name" length="45" nullable="false"/>
+    <field name="company" type="string" column="Company" length="45" nullable="true"/>
+    <field name="department" type="string" column="Department" length="45" nullable="true"/>
+    <field name="jobTitle" type="string" column="Job_title" length="45" nullable="true"/>
+    <field name="homestreet" type="string" column="Homestreet" length="100" nullable="true"/>
+    <field name="homeCity" type="string" column="Home_city" length="45" nullable="true"/>
+    <field name="homeState" type="string" column="Home_state" length="45" nullable="true"/>
+    <field name="homePostalcode" type="string" column="Home_postalcode" length="45" nullable="true"/>
+    <field name="homeCountry" type="string" column="Home_country" length="45" nullable="true"/>
+    <field name="homeFax" type="string" column="Home_fax" length="45" nullable="true"/>
+    <field name="homePhone" type="string" column="Home_phone" length="45" nullable="true"/>
+    <field name="homePhone2" type="string" column="Home_phone2" length="45" nullable="true"/>
+    <field name="mobilePhone" type="string" column="Mobile_phone" length="45" nullable="true"/>
+    <field name="birthday" type="date" column="Birthday" nullable="true"/>
+    <field name="poBox" type="string" column="PO_Box" length="45" nullable="true"/>
+    <field name="children" type="string" column="Children" length="45" nullable="true"/>
+    <field name="emailAddress" type="string" column="Email_address" length="45" nullable="true"/>
+    <field name="emailDisplayName" type="string" column="Email_display_name" length="45" nullable="true"/>
+    <field name="emailAddress2" type="string" column="Email_address2" length="45" nullable="true"/>
+    <field name="email2DisplayName" type="string" column="Email2_display_name" length="45" nullable="true"/>
+    <field name="emailAddress3" type="string" column="Email_address3" length="45" nullable="true"/>
+    <field name="email3DisplayName" type="string" column="Email3_display_name" length="45" nullable="true"/>
+    <field name="gender" type="string" column="Gender" length="45" nullable="true"/>
+    <field name="governmentIdNumber" type="string" column="Government_id_number" length="45" nullable="true"/>
+    <field name="hobby" type="string" column="Hobby" length="45" nullable="true"/>
+    <field name="keywords" type="string" column="Keywords" length="45" nullable="true"/>
+    <field name="comment" type="string" column="Comment" length="45" nullable="true"/>
+    <field name="spouse" type="string" column="Spouse" length="45" nullable="true"/>
+    <field name="website" type="string" column="Website" length="45" nullable="true"/>
+    <field name="picturePath" type="string" column="Picture_path" length="45" nullable="true"/>
+    <field name="officeAddress" type="string" column="Office_address" length="45" nullable="true"/>
+    <field name="officeStreet" type="string" column="Office_street" length="45" nullable="true"/>
+    <field name="officeCity" type="string" column="Office_city" length="45" nullable="true"/>
+    <field name="officeZip" type="string" column="Office_zip" length="45" nullable="true"/>
+    <field name="officeState" type="string" column="Office_state" length="45" nullable="true"/>
+    <field name="officeCountry" type="string" column="Office_country" length="45" nullable="true"/>
+    <field name="officePhone" type="string" column="Office_phone" length="45" nullable="true"/>
+  </entity>
+</doctrine-mapping>

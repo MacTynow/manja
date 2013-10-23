@@ -1,0 +1,12 @@
+{% extends "ManjaSourcingBundle::layout.html.twig" %}
+
+{% block title %}
+    Add a stone - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h2>Add a stone</h2>
+    
+    {% include "ManjaSourcingBundle:Sourcing:form.html.twig" %}
+
+{% endblock %}

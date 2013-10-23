@@ -1,0 +1,40 @@
+{% extends "ManjaSourcingBundle::layout.html.twig" %}
+
+{% block title %}
+    Metals - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <a href="{{ path('manja_sourcing_add_metal') }}" class="btn">Add metal</a>
+
+    <hr/>
+
+    {% include "ManjaSourcingBundle:Sourcing:sourcing_list.html.twig" %}
+
+    <table id="table1" class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Metal</th>
+            <th>Color</th>
+            <th>Purity %</th>
+            <th>Volumic Mass</th>            
+            <th>Price /gram</th>            
+            <th>Supplier</th>            
+        </tr>
+    </thead>
+    <tbody>
+    {% for metal in metals %}
+        <tr>
+            <td>{{ metal.getIdSrcMetal() }}</td>
+            <td>{{ metal.getMetal() }}</td>
+            <td>{{ metal.getMetalColor() }}</td>
+            <td>{{ metal.getPurityPercent() }}</td>
+            <td>{{ metal.getVolumicMass() }}</td>
+            <td>{{ metal.getPriceGram().getPrice() }}</td>
+            <td>{{ metal.getFurnisher().getContact().getCompany() }}</td>
+        </tr>
+    {% endfor %}
+    </tbody> 
+    </table>
+ {% endblock %}

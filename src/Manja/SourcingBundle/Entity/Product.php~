@@ -1,0 +1,132 @@
+<?php
+
+namespace Manja\SourcingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Product
+ *
+ * @ORM\Table(name="PRODUCT")
+ * @ORM\Entity
+ */
+class Product
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idPRODUCT", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idproduct;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var \ReqMetal
+     *
+     * @ORM\ManyToOne(targetEntity="ReqMetal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="req_metal", referencedColumnName="idREQ_METAL")
+     * })
+     */
+    private $reqMetal;
+
+    /**
+     * @var \SrcMetal
+     *
+     * @ORM\ManyToOne(targetEntity="SrcMetal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="src_metal", referencedColumnName="idSRC_METAL")
+     * })
+     */
+    private $srcMetal;
+
+    /**
+     * @var \ReqStone
+     *
+     * @ORM\ManyToOne(targetEntity="ReqStone")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="req_stone", referencedColumnName="idREQ_STONE")
+     * })
+     */
+    private $reqStone;
+
+    /**
+     * @var \SrcStone
+     *
+     * @ORM\ManyToOne(targetEntity="SrcStone")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="src_stone", referencedColumnName="idSTONE")
+     * })
+     */
+    private $srcStone;
+
+    /**
+     * @var \SrcDiams
+     *
+     * @ORM\ManyToOne(targetEntity="SrcDiams")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="src_diams", referencedColumnName="idSRC_DIAMS")
+     * })
+     */
+    private $srcDiams;
+
+    /**
+     * @var \SrcPearls
+     *
+     * @ORM\ManyToOne(targetEntity="SrcPearls")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="src_pearls", referencedColumnName="idSRC_PEARLS")
+     * })
+     */
+    private $srcPearls;
+
+    /**
+     * @var \SrcChains
+     *
+     * @ORM\ManyToOne(targetEntity="SrcChains")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="src_chains", referencedColumnName="idSRC_CHAINS")
+     * })
+     */
+    private $srcChains;
+
+    /**
+     * @var \SrcFinding
+     *
+     * @ORM\ManyToOne(targetEntity="SrcFinding")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="src_finding", referencedColumnName="idSRC_FINDING")
+     * })
+     */
+    private $srcFinding;
+
+    /**
+     * @var \SrcAccLength
+     *
+     * @ORM\ManyToOne(targetEntity="SrcAccLength")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="src_acc_length", referencedColumnName="idSRC_ACC_LENGTH")
+     * })
+     */
+    private $srcAccLength;
+
+    /**
+     * @var \SrcAccPiece
+     *
+     * @ORM\ManyToOne(targetEntity="SrcAccPiece")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="src_acc_piece", referencedColumnName="idSRC_ACC_PIECE")
+     * })
+     */
+    private $srcAccPiece;
+
+
+}

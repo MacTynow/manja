@@ -1,0 +1,7 @@
+parameters:
+#    manja_sourcing.example.class: Manja\SourcingBundle\Example
+
+services:
+#    manja_sourcing.example:
+#        class: %manja_sourcing.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

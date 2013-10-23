@@ -1,0 +1,49 @@
+{% extends "ManjaSourcingBundle::layout.html.twig" %}
+
+{% block title %}
+    Suppliers - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <a href="{{ path('manja_sourcing_add_supplier') }}" class="btn">Add a supplier</a>
+
+    <hr/>
+
+    {% include "ManjaSourcingBundle:Sourcing:sourcing_list.html.twig" %}
+
+    <table id="table1" class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Contact</th>
+            <th>Company</th>
+            <th>Rank</th>
+            <th>Product Category</th>            
+            <th>Supplies</th>            
+        </tr>
+    </thead>
+    <tbody>
+    {% for supplier in suppliers %} 
+        <tr>
+            <td>{{ supplier.getIdsupplier() }}</td>
+            <td>{{ supplier.getContact().getTitle() }} {{ supplier.getContact().getFirstName() }} {{ supplier.getContact().getLastName() }}</td>
+            <td>{{ supplier.getContact().getCompany() }}</td>
+            <td>{{ supplier.getRank().getRank() }}</td>
+            <td>{{ supplier.getProductCategory() }}</td>
+            <td>
+                {% if supplier.getSuppliesDiamond() == 1 %} <p>Diamonds</p> {% endif %}                
+                {% if supplier.getSuppliesStones() == 1 %} <p>Stones</p> {% endif %}                
+                {% if supplier.getSuppliesPearls() == 1 %} <p>Pearls</p> {% endif %}                
+                {% if supplier.getSuppliesMetal() == 1 %} <p>Metal</p> {% endif %}
+                {% if supplier.getSuppliesChains() == 1 %} <p>Chains</p> {% endif %}
+                {% if supplier.getSuppliesAccLength() == 1 %} <p>Accessories/Length</p> {% endif %}
+                {% if supplier.getSuppliesAccPiece() == 1 %} <p>Accessories/Piece</p> {% endif %}
+                {% if supplier.getSuppliesFindings() == 1 %} <p>Findings</p> {% endif %}
+                {% if supplier.getSuppliesTask() == 1 %} <p>Tasks</p> {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,122 @@
+<?php
+
+namespace Manja\SourcingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Supplier
+ *
+ * @ORM\Table(name="SUPPLIER")
+ * @ORM\Entity
+ */
+class Supplier
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idSUPPLIER", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsupplier;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Product_category", type="string", length=45, nullable=true)
+     */
+    private $productCategory;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Comment", type="string", length=45, nullable=true)
+     */
+    private $comment;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Supplies_diamond", type="boolean", nullable=true)
+     */
+    private $suppliesDiamond;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Supplies_Stones", type="boolean", nullable=true)
+     */
+    private $suppliesStones;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Supplies_Pearls", type="boolean", nullable=true)
+     */
+    private $suppliesPearls;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Supplies_chains", type="boolean", nullable=true)
+     */
+    private $suppliesChains;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Supplies_findings", type="boolean", nullable=true)
+     */
+    private $suppliesFindings;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Supplies_acc_length", type="boolean", nullable=true)
+     */
+    private $suppliesAccLength;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Supplies_acc_piece", type="boolean", nullable=true)
+     */
+    private $suppliesAccPiece;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Supplies_Metal", type="boolean", nullable=true)
+     */
+    private $suppliesMetal;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Supplies_Task", type="boolean", nullable=true)
+     */
+    private $suppliesTask;
+
+    /**
+     * @var \Contact
+     *
+     * @ORM\ManyToOne(targetEntity="Contact")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Contact", referencedColumnName="idCONTACT")
+     * })
+     */
+    private $contact;
+
+    /**
+     * @var \ContactRank
+     *
+     * @ORM\ManyToOne(targetEntity="ContactRank")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Rank", referencedColumnName="idCONTACT_RANK")
+     * })
+     */
+    private $rank;
+
+
+}

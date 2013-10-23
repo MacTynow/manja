@@ -1,0 +1,132 @@
+<?php
+
+namespace Manja\SourcingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SrcDiams
+ *
+ * @ORM\Table(name="SRC_DIAMS")
+ * @ORM\Entity
+ */
+class SrcDiams
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idSRC_DIAMS", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsrcDiams;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Type", type="string", length=45, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Shape", type="string", length=45, nullable=false)
+     */
+    private $shape;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Cut", type="string", length=45, nullable=false)
+     */
+    private $cut;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Cut_comment", type="string", length=45, nullable=true)
+     */
+    private $cutComment;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Color", type="string", length=45, nullable=false)
+     */
+    private $color;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Clarity", type="string", length=45, nullable=false)
+     */
+    private $clarity;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Comment", type="string", length=45, nullable=true)
+     */
+    private $comment;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Size1", type="integer", nullable=false)
+     */
+    private $size1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Size2", type="integer", nullable=false)
+     */
+    private $size2;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Weight_piece", type="integer", nullable=false)
+     */
+    private $weightPiece;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Min_qty_buy", type="integer", nullable=true)
+     */
+    private $minQtyBuy;
+
+    /**
+     * @var \Supplier
+     *
+     * @ORM\ManyToOne(targetEntity="Supplier")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
+     * })
+     */
+    private $furnisher;
+
+    /**
+     * @var \Prices
+     *
+     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Price_ct", referencedColumnName="idPRICES")
+     * })
+     */
+    private $priceCt;
+
+    /**
+     * @var \Prices
+     *
+     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
+     * })
+     */
+    private $pricePiece;
+
+
+}

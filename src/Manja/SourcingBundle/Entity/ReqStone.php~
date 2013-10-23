@@ -1,0 +1,32 @@
+<?php
+
+namespace Manja\SourcingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ReqStone
+ *
+ * @ORM\Table(name="REQ_STONE")
+ * @ORM\Entity
+ */
+class ReqStone
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idREQ_STONE", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idreqStone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Quantity", type="string", length=45, nullable=false)
+     */
+    private $quantity;
+
+
+}

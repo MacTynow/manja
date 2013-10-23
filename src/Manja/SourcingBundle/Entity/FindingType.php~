@@ -1,0 +1,32 @@
+<?php
+
+namespace Manja\SourcingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * FindingType
+ *
+ * @ORM\Table(name="FINDING_TYPE")
+ * @ORM\Entity
+ */
+class FindingType
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idFINDING_TYPE", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idfindingType;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Type", type="string", length=45, nullable=false)
+     */
+    private $type;
+
+
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Supplier" table="SUPPLIER">
+    <id name="idsupplier" type="integer" column="idSUPPLIER">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="productCategory" type="string" column="Product_category" length="45" nullable="true"/>
+    <field name="comment" type="string" column="Comment" length="45" nullable="true"/>
+    <field name="suppliesDiamond" type="boolean" column="Supplies_diamond" nullable="true"/>
+    <field name="suppliesStones" type="boolean" column="Supplies_Stones" nullable="true"/>
+    <field name="suppliesPearls" type="boolean" column="Supplies_Pearls" nullable="true"/>
+    <field name="suppliesChains" type="boolean" column="Supplies_chains" nullable="true"/>
+    <field name="suppliesFindings" type="boolean" column="Supplies_findings" nullable="true"/>
+    <field name="suppliesAccLength" type="boolean" column="Supplies_acc_length" nullable="true"/>
+    <field name="suppliesAccPiece" type="boolean" column="Supplies_acc_piece" nullable="true"/>
+    <field name="suppliesMetal" type="boolean" column="Supplies_Metal" nullable="true"/>
+    <field name="suppliesTask" type="boolean" column="Supplies_Task" nullable="true"/>
+    <many-to-one field="rank" target-entity="ContactRank">
+      <join-columns>
+        <join-column name="Rank" referenced-column-name="idCONTACT_RANK"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="contact" target-entity="Contact">
+      <join-columns>
+        <join-column name="Contact" referenced-column-name="idCONTACT"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

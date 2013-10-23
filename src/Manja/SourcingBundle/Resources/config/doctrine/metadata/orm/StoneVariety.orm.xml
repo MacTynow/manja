@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="StoneVariety" table="STONE_VARIETY">
+    <id name="idstoneVariety" type="integer" column="idSTONE_VARIETY">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="variety" type="string" column="Variety" length="45" nullable="false"/>
+    <field name="family" type="string" column="Family" length="45" nullable="false"/>
+    <field name="sg" type="float" column="SG" nullable="false"/>
+  </entity>
+</doctrine-mapping>

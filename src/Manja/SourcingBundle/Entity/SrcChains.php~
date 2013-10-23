@@ -1,0 +1,156 @@
+<?php
+
+namespace Manja\SourcingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SrcChains
+ *
+ * @ORM\Table(name="SRC_CHAINS")
+ * @ORM\Entity
+ */
+class SrcChains
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idSRC_CHAINS", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsrcChains;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Type", type="string", length=45, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Name", type="string", length=45, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Version", type="string", length=45, nullable=true)
+     */
+    private $version;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Base_metal", type="string", length=45, nullable=false)
+     */
+    private $baseMetal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Finish", type="string", length=45, nullable=true)
+     */
+    private $finish;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Shape", type="string", length=45, nullable=false)
+     */
+    private $shape;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Size1", type="integer", nullable=false)
+     */
+    private $size1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Size2", type="integer", nullable=false)
+     */
+    private $size2;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Size_section", type="integer", nullable=false)
+     */
+    private $sizeSection;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Weight_meter", type="integer", nullable=false)
+     */
+    private $weightMeter;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Qty_length_finished", type="integer", nullable=true)
+     */
+    private $qtyLengthFinished;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Min_qty_buy", type="string", length=45, nullable=true)
+     */
+    private $minQtyBuy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Picture_path", type="string", length=45, nullable=true)
+     */
+    private $picturePath;
+
+    /**
+     * @var \Supplier
+     *
+     * @ORM\ManyToOne(targetEntity="Supplier")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
+     * })
+     */
+    private $furnisher;
+
+    /**
+     * @var \Prices
+     *
+     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Price_gram", referencedColumnName="idPRICES")
+     * })
+     */
+    private $priceGram;
+
+    /**
+     * @var \Prices
+     *
+     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Price_meter", referencedColumnName="idPRICES")
+     * })
+     */
+    private $priceMeter;
+
+    /**
+     * @var \Prices
+     *
+     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
+     * })
+     */
+    private $pricePiece;
+
+
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SrcPearls" table="SRC_PEARLS">
+    <id name="idsrcPearls" type="integer" column="idSRC_PEARLS">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="variety" type="string" column="Variety" length="45" nullable="false"/>
+    <field name="origin" type="string" column="Origin" length="45" nullable="false"/>
+    <field name="drilling" type="string" column="Drilling" length="45" nullable="true"/>
+    <field name="shape" type="string" column="Shape" length="45" nullable="false"/>
+    <field name="shapeGrade" type="integer" column="Shape_grade" nullable="false"/>
+    <field name="color1" type="string" column="Color1" length="45" nullable="false"/>
+    <field name="color2" type="string" column="Color2" length="45" nullable="false"/>
+    <field name="lusterGrade" type="integer" column="Luster_grade" nullable="false"/>
+    <field name="surfaceGrade" type="integer" column="Surface_grade" nullable="false"/>
+    <field name="size1" type="integer" column="Size1" nullable="false"/>
+    <field name="size2" type="integer" column="Size2" nullable="false"/>
+    <field name="sizeTxt" type="string" column="Size_txt" length="45" nullable="true"/>
+    <field name="weightPiece" type="integer" column="Weight_piece" nullable="false"/>
+    <field name="minQtyBuy" type="integer" column="Min_qty_buy" nullable="true"/>
+    <field name="picturePath" type="string" column="Picture_path" length="45" nullable="true"/>
+    <many-to-one field="pricePiece" target-entity="Prices">
+      <join-columns>
+        <join-column name="Price_piece" referenced-column-name="idPRICES"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="furnisher" target-entity="Supplier">
+      <join-columns>
+        <join-column name="Furnisher" referenced-column-name="idSUPPLIER"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

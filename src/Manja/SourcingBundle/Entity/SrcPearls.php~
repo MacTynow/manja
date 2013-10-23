@@ -1,0 +1,150 @@
+<?php
+
+namespace Manja\SourcingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SrcPearls
+ *
+ * @ORM\Table(name="SRC_PEARLS")
+ * @ORM\Entity
+ */
+class SrcPearls
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idSRC_PEARLS", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsrcPearls;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Variety", type="string", length=45, nullable=false)
+     */
+    private $variety;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Origin", type="string", length=45, nullable=false)
+     */
+    private $origin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Drilling", type="string", length=45, nullable=true)
+     */
+    private $drilling;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Shape", type="string", length=45, nullable=false)
+     */
+    private $shape;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Shape_grade", type="integer", nullable=false)
+     */
+    private $shapeGrade;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Color1", type="string", length=45, nullable=false)
+     */
+    private $color1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Color2", type="string", length=45, nullable=false)
+     */
+    private $color2;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Luster_grade", type="integer", nullable=false)
+     */
+    private $lusterGrade;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Surface_grade", type="integer", nullable=false)
+     */
+    private $surfaceGrade;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Size1", type="integer", nullable=false)
+     */
+    private $size1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Size2", type="integer", nullable=false)
+     */
+    private $size2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Size_txt", type="string", length=45, nullable=true)
+     */
+    private $sizeTxt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Weight_piece", type="integer", nullable=false)
+     */
+    private $weightPiece;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Min_qty_buy", type="integer", nullable=true)
+     */
+    private $minQtyBuy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Picture_path", type="string", length=45, nullable=true)
+     */
+    private $picturePath;
+
+    /**
+     * @var \Supplier
+     *
+     * @ORM\ManyToOne(targetEntity="Supplier")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
+     * })
+     */
+    private $furnisher;
+
+    /**
+     * @var \Prices
+     *
+     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
+     * })
+     */
+    private $pricePiece;
+
+
+}

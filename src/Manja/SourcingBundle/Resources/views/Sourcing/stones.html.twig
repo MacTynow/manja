@@ -1,0 +1,42 @@
+{% extends "ManjaSourcingBundle::layout.html.twig" %}
+
+{% block title %}
+    Stones - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <a href="{{ path('manja_sourcing_add_stone') }}" class="btn">Add stone</a>
+
+    <hr/>
+
+    {% include "ManjaSourcingBundle:Sourcing:sourcing_list.html.twig" %}
+
+    <table id="table1" class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Stone</th>
+            <th>Shape</th>
+            <th>Cut</th>
+            <th>Colors</th>
+            <th>Price /carat</th>            
+            <th>Price /piece</th>            
+            <th>Supplier</th>            
+        </tr>
+    </thead>
+    <tbody>
+    {% for stone in stones %}
+        <tr>
+            <td>{{ stone.getIdSrcStone() }}</td>
+            <td>{{ stone.getType() }}</td>
+            <td>{{ stone.getShape() }}</td>
+            <td>{{ stone.getCut() }}</td>
+            <td>{{ stone.getColor1() }} {{ stone.getColor2() }}</td>
+            <td>{{ stone.getPriceCt().getPrice() }}</td>
+            <td>{{ stone.getPricePiece().getPrice() }}</td>
+            <td>{{ stone.getFurnisher().getContact().getCompany() }}</td>
+        </tr>
+    {% endfor %}
+    </tbody> 
+    </table>
+ {% endblock %}
