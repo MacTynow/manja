@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ReqStone" table="REQ_STONE">
+    <id name="idreqStone" type="integer" column="idREQ_STONE">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="quantity" type="string" column="Quantity" length="45" nullable="false"/>
+  </entity>
+</doctrine-mapping>

@@ -28,7 +28,7 @@ class SrcDiamsType extends AbstractType
             ->add('minQtyBuy',          'text')
             ->add('priceCt',            new PricesType())
             ->add('pricePiece',         new PricesType())
-            ->add('furnisher',      'entity', array('class' => 'ManjaSourcingBundle:Supplier',
+            ->add('furnisher',          'entity', array('class' => 'ManjaSourcingBundle:Supplier',
                                                     'property' => 'company',
                                                     'multiple' => false))
         ;

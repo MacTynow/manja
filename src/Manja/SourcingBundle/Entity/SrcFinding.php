@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class SrcFinding
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idSRC_FINDING", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idsrcFinding;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Version", type="string", length=45, nullable=true)
@@ -31,7 +22,7 @@ class SrcFinding
     /**
      * @var string
      *
-     * @ORM\Column(name="Base metal", type="string", length=45, nullable=false)
+     * @ORM\Column(name="Base_metal", type="string", length=45, nullable=false)
      */
     private $baseMetal;
 
@@ -99,29 +90,28 @@ class SrcFinding
     private $picturePath;
 
     /**
-     * @var \Supplier
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Supplier")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
-     * })
+     * @ORM\Column(name="idSRC_FINDING", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $furnisher;
-
-    /**
-     * @var \FindingName
-     *
-     * @ORM\ManyToOne(targetEntity="FindingName")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Finding_name", referencedColumnName="idFINDING_NAME")
-     * })
-     */
-    private $findingName;
+    private $idsrcFinding;
 
     /**
      * @var \Prices
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
+     * })
+     */
+    private $pricePiece;
+
+    /**
+     * @var \Prices
+     *
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Price_gram", referencedColumnName="idPRICES")
      * })
@@ -129,26 +119,26 @@ class SrcFinding
     private $priceGram;
 
     /**
-     * @var \Prices
+     * @var \FindingName
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="FindingName", cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
+     *   @ORM\JoinColumn(name="Finding_name", referencedColumnName="idFINDING_NAME")
      * })
      */
-    private $pricePiece;
-
-
+    private $findingName;
 
     /**
-     * Get idsrcFinding
+     * @var \Supplier
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="Supplier", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
+     * })
      */
-    public function getIdsrcFinding()
-    {
-        return $this->idsrcFinding;
-    }
+    private $furnisher;
+
+
 
     /**
      * Set version
@@ -404,81 +394,22 @@ class SrcFinding
     }
 
     /**
-     * Set furnisher
+     * Get idsrcFinding
      *
-     * @param \Manja\SourcingBundle\Entity\Supplier $furnisher
-     * @return SrcFinding
+     * @return integer 
      */
-    public function setFurnisher(\Manja\SourcingBundle\Entity\Supplier $furnisher = null)
+    public function getIdsrcFinding()
     {
-        $this->furnisher = $furnisher;
-    
-        return $this;
-    }
-
-    /**
-     * Get furnisher
-     *
-     * @return \Manja\SourcingBundle\Entity\Supplier 
-     */
-    public function getFurnisher()
-    {
-        return $this->furnisher;
-    }
-
-    /**
-     * Set findingName
-     *
-     * @param \Manja\SourcingBundle\Entity\FindingName $findingName
-     * @return SrcFinding
-     */
-    public function setFindingName(\Manja\SourcingBundle\Entity\FindingName $findingName = null)
-    {
-        $this->findingName = $findingName;
-    
-        return $this;
-    }
-
-    /**
-     * Get findingName
-     *
-     * @return \Manja\SourcingBundle\Entity\FindingName 
-     */
-    public function getFindingName()
-    {
-        return $this->findingName;
-    }
-
-    /**
-     * Set priceGram
-     *
-     * @param \Manja\SourcingBundle\Entity\Prices $priceGram
-     * @return SrcFinding
-     */
-    public function setPriceGram(\Manja\SourcingBundle\Entity\Prices $priceGram = null)
-    {
-        $this->priceGram = $priceGram;
-    
-        return $this;
-    }
-
-    /**
-     * Get priceGram
-     *
-     * @return \Manja\SourcingBundle\Entity\Prices 
-     */
-    public function getPriceGram()
-    {
-        return $this->priceGram;
+        return $this->idsrcFinding;
     }
 
     /**
      * Set pricePiece
      *
-     * @param \Manja\SourcingBundle\Entity\Prices $pricePiece
+     * @param Prices $pricePiece
      * @return SrcFinding
      */
-    public function setPricePiece(\Manja\SourcingBundle\Entity\Prices $pricePiece = null)
+    public function setPricePiece(Prices $pricePiece = null)
     {
         $this->pricePiece = $pricePiece;
     
@@ -488,10 +419,79 @@ class SrcFinding
     /**
      * Get pricePiece
      *
-     * @return \Manja\SourcingBundle\Entity\Prices 
+     * @return Prices 
      */
     public function getPricePiece()
     {
         return $this->pricePiece;
+    }
+
+    /**
+     * Set priceGram
+     *
+     * @param Prices $priceGram
+     * @return SrcFinding
+     */
+    public function setPriceGram(Prices $priceGram = null)
+    {
+        $this->priceGram = $priceGram;
+    
+        return $this;
+    }
+
+    /**
+     * Get priceGram
+     *
+     * @return Prices 
+     */
+    public function getPriceGram()
+    {
+        return $this->priceGram;
+    }
+
+    /**
+     * Set findingName
+     *
+     * @param FindingName $findingName
+     * @return SrcFinding
+     */
+    public function setFindingName(FindingName $findingName = null)
+    {
+        $this->findingName = $findingName;
+    
+        return $this;
+    }
+
+    /**
+     * Get findingName
+     *
+     * @return FindingName 
+     */
+    public function getFindingName()
+    {
+        return $this->findingName;
+    }
+
+    /**
+     * Set furnisher
+     *
+     * @param Supplier $furnisher
+     * @return SrcFinding
+     */
+    public function setFurnisher(Supplier $furnisher = null)
+    {
+        $this->furnisher = $furnisher;
+    
+        return $this;
+    }
+
+    /**
+     * Get furnisher
+     *
+     * @return Supplier 
+     */
+    public function getFurnisher()
+    {
+        return $this->furnisher;
     }
 }

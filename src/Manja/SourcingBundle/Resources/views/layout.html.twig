@@ -5,43 +5,37 @@
 {% endblock %}
 
 {% block body %}
-<body>
-        <div class="container-fluid">
-        <div id="header" class="hero-unit">
-            <h1>DB Manager</h1>
 
-            <p>Work in progress</p>
-        </div>
+        {{ parent() }}
 
         <div class="row-fluid">
-            <div id="menu" class="span2">
+            {#<div id="menu" class="span2">
                 <h3>Menu</h3>
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="{{ path('manja_sourcing_homepage') }}">Home</a></li>
+                    <hr/>
                     <li><a href="{{ path('manja_sourcing_prices') }}">Prices</a></li>
-                    <li><a href="{{ path('manja_sourcing_list_suppliers') }}">Suppliers</a></li>
-                    <li><a href="{{ path('manja_sourcing_list_metals') }}">Metal</a></li>
-                    <li><a href="{{ path('manja_sourcing_list_stones') }}">Stones</a></li>
-                    <li><a href="{{ path('manja_sourcing_list_diamonds') }}">Diamonds</a></li>
-                    <li><a href="{{ path('manja_sourcing_list_pearls') }}">Pearls</a></li>
-                    <li><a href="{{ path('manja_sourcing_list_findings') }}">Findings</a></li>
-                    <li><a href="{{ path('manja_sourcing_list_chains') }}">Chains</a></li>
-                    <li><a href="{{ path('manja_sourcing_list_accessories_length') }}">Accessories (length)</a></li>
-                    <li><a href="{{ path('manja_sourcing_list_accessories_piece') }}">Accessories (piece)</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "supplier" }) }}">Suppliers</a></li>
+                    <hr/>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "metal" }) }}">Metal</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "stone" }) }}">Stones</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "diamond" }) }}">Diamonds</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "pearl" }) }}">Pearls</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "finding" }) }}">Findings</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "chain" }) }}">Chains</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "accessorie_length" }) }}">Accessories (length)</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "accessorie_piece" }) }}">Accessories (piece)</a></li>
                 </ul>        
-            </div>
-
-            <div id="content" class="span10">
+            </div>#}
+            
+            <div id="content" class="span12">
                 {% block content %}
+                {% endblock %}
+                
+                {% block form_content %}
                 {% endblock %}
             </div>
         </div>
         
         <hr>
-
-        <footer>
-            <p>Manja Thai, Ltd</p>
-        </footer>
-    </div>
-</body>
 {% endblock %}

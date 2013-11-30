@@ -1,0 +1,41 @@
+{% extends "ManjaSourcingBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="span8 well">
+    <table class="table table-bordered table-condensed table-stripped">
+        <tr>
+            <td>ID </td>          
+            <td>{{ item.getIdsupplier() }}</td> 
+        </tr>
+        <tr>
+            <td>Company</td> 
+            <td>{{ item.getCompany() }}</td> 
+        </tr>
+        <tr>
+            <td>Product Category</td>
+            <td>{{ item.getProductCategory() }}</td>
+        </tr>
+        <tr>
+            <td>Supplies</td>
+            <td>
+                {% if item.getSuppliesDiamond() == 1 %} <p>Diamonds</p> {% endif %}                
+                {% if item.getSuppliesStones() == 1 %} <p>Stones</p> {% endif %}                
+                {% if item.getSuppliesPearls() == 1 %} <p>Pearls</p> {% endif %}                
+                {% if item.getSuppliesMetal() == 1 %} <p>Metal</p> {% endif %}
+                {% if item.getSuppliesChains() == 1 %} <p>Chains</p> {% endif %}
+                {% if item.getSuppliesAccLength() == 1 %} <p>Accessories/Length</p> {% endif %}
+                {% if item.getSuppliesAccPiece() == 1 %} <p>Accessories/Piece</p> {% endif %}
+                {% if item.getSuppliesFindings() == 1 %} <p>Findings</p> {% endif %}
+                {% if item.getSuppliesTask() == 1 %} <p>Tasks</p> {% endif %}</td>
+        </tr>
+        <tr>
+            <td>Rank</td>
+            <td>{{ item.getRank().getRank() }}</td>
+        </tr>
+
+    </table>
+    </div>
+    <div class="span4 well">
+        <img src="{{ asset('bundles/manjasourcing/images/hyene-1257455213.jpg') }}" alt="" />
+    </div>
+{% endblock %}

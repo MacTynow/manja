@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class SrcDiams
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idSRC_DIAMS", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idsrcDiams;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Type", type="string", length=45, nullable=false)
@@ -99,19 +90,28 @@ class SrcDiams
     private $minQtyBuy;
 
     /**
-     * @var \Supplier
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Supplier")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
-     * })
+     * @ORM\Column(name="idSRC_DIAMS", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $furnisher;
+    private $idsrcDiams;
 
     /**
      * @var \Prices
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
+     * })
+     */
+    private $pricePiece;
+
+    /**
+     * @var \Prices
+     *
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Price_ct", referencedColumnName="idPRICES")
      * })
@@ -119,26 +119,16 @@ class SrcDiams
     private $priceCt;
 
     /**
-     * @var \Prices
+     * @var \Supplier
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="Supplier", cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
+     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
      * })
      */
-    private $pricePiece;
+    private $furnisher;
 
 
-
-    /**
-     * Get idsrcDiams
-     *
-     * @return integer 
-     */
-    public function getIdsrcDiams()
-    {
-        return $this->idsrcDiams;
-    }
 
     /**
      * Set type
@@ -394,58 +384,22 @@ class SrcDiams
     }
 
     /**
-     * Set furnisher
+     * Get idsrcDiams
      *
-     * @param \Manja\SourcingBundle\Entity\Supplier $furnisher
-     * @return SrcDiams
+     * @return integer 
      */
-    public function setFurnisher(\Manja\SourcingBundle\Entity\Supplier $furnisher = null)
+    public function getIdsrcDiams()
     {
-        $this->furnisher = $furnisher;
-    
-        return $this;
-    }
-
-    /**
-     * Get furnisher
-     *
-     * @return \Manja\SourcingBundle\Entity\Supplier 
-     */
-    public function getFurnisher()
-    {
-        return $this->furnisher;
-    }
-
-    /**
-     * Set priceCt
-     *
-     * @param \Manja\SourcingBundle\Entity\Prices $priceCt
-     * @return SrcDiams
-     */
-    public function setPriceCt(\Manja\SourcingBundle\Entity\Prices $priceCt = null)
-    {
-        $this->priceCt = $priceCt;
-    
-        return $this;
-    }
-
-    /**
-     * Get priceCt
-     *
-     * @return \Manja\SourcingBundle\Entity\Prices 
-     */
-    public function getPriceCt()
-    {
-        return $this->priceCt;
+        return $this->idsrcDiams;
     }
 
     /**
      * Set pricePiece
      *
-     * @param \Manja\SourcingBundle\Entity\Prices $pricePiece
+     * @param Prices $pricePiece
      * @return SrcDiams
      */
-    public function setPricePiece(\Manja\SourcingBundle\Entity\Prices $pricePiece = null)
+    public function setPricePiece(Prices $pricePiece = null)
     {
         $this->pricePiece = $pricePiece;
     
@@ -455,10 +409,56 @@ class SrcDiams
     /**
      * Get pricePiece
      *
-     * @return \Manja\SourcingBundle\Entity\Prices 
+     * @return Prices 
      */
     public function getPricePiece()
     {
         return $this->pricePiece;
+    }
+
+    /**
+     * Set priceCt
+     *
+     * @param Prices $priceCt
+     * @return SrcDiams
+     */
+    public function setPriceCt(Prices $priceCt = null)
+    {
+        $this->priceCt = $priceCt;
+    
+        return $this;
+    }
+
+    /**
+     * Get priceCt
+     *
+     * @return Prices 
+     */
+    public function getPriceCt()
+    {
+        return $this->priceCt;
+    }
+
+    /**
+     * Set furnisher
+     *
+     * @param Supplier $furnisher
+     * @return SrcDiams
+     */
+    public function setFurnisher(Supplier $furnisher = null)
+    {
+        $this->furnisher = $furnisher;
+    
+        return $this;
+    }
+
+    /**
+     * Get furnisher
+     *
+     * @return Supplier 
+     */
+    public function getFurnisher()
+    {
+        return $this->furnisher;
     }
 }

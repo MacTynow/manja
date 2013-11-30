@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <title>{% block title %} Manja Thai {% endblock %}</title>
+        
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('js/DataTables/media/css/jquery.dataTables.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('bundles/sonataadmin/css/layout.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('bundles/manjasourcing/css/layout.css') }}" type="text/css" />
+        {% endblock %}
+
+        {% block javascript %}
+            <script type="text/javascript" language="javascript" src="/Symfony/web/js/DataTables/media/js/jquery.js"></script>
+            <script type="text/javascript" language="javascript" src="/Symfony/web/js/DataTables/media/js/jquery.dataTables.js"></script>
+            <script src="/Symfony/web/bootstrap/js/bootstrap.min.js "></script>
+        {% endblock %}
+    </head>
+   
+   
+    
+    
+<body> 
+<div class="sonata-bc">
+<div class="container-fluid">
+
+<div class="row-fluid">
+<div class="span12">   
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <ul class="nav">
+            <li><a href="{{ path('manja_sourcing_homepage') }}">Home</a></li>
+            <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sourcing<b class="caret"></b> </a>
+                <ul class="dropdown-menu">
+                    {#<li><a href="{{ path('manja_sourcing_prices') }}">Prices</a></li>#}
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "supplier" }) }}">Suppliers</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "contact" }) }}">Contacts</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-submenu">
+                        <a href="">Accessories</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('manja_sourcing_list', { 'data': "accessorie_length" }) }}">Length</a></li>
+                            <li><a href="{{ path('manja_sourcing_list', { 'data': "accessorie_piece" }) }}">Piece</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "chain" }) }}">Chains</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "diamond" }) }}">Diamonds</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "finding" }) }}">Findings</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "metal" }) }}">Metal</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "pearl" }) }}">Pearls</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "stone" }) }}">Stones</a></li>
+                    <li><a href="{{ path('manja_sourcing_list', { 'data': "stone_variety" }) }}">Stone Variety</a></li>
+                </ul>
+            <li><a href="#">Stock</a></li>
+            </ul>
+            <span class="login-blurb">{{ app.user.username }} - </span>
+            <ul class="nav pull-right">
+                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+            </ul>
+        {% else %}
+            <ul class="nav"><a href="{{ path('fos_user_security_login') }}">Connexion</a></ul>
+        {% endif %} 
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+{% block body %}
+{% endblock %}
+</div>
+</body>
+</html>

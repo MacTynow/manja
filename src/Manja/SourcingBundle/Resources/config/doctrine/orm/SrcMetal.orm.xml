@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SrcMetal" table="SRC_METAL">
+    <id name="idsrcMetal" type="integer" column="idSRC_METAL">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="metalColor" type="string" column="Metal_color" length="45" nullable="false"/>
+    <field name="metal" type="string" column="Metal" length="45" nullable="false"/>
+    <field name="purityPercent" type="integer" column="Purity_percent" nullable="false"/>
+    <field name="purityName" type="string" column="Purity_name" length="45" nullable="false"/>
+    <field name="volumicMass" type="string" column="Volumic_mass" length="45" nullable="false"/>
+    <many-to-one field="priceGram" target-entity="Prices">
+      <join-columns>
+        <join-column name="Price_gram" referenced-column-name="idPRICES"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="furnisher" target-entity="Supplier">
+      <join-columns>
+        <join-column name="Furnisher" referenced-column-name="idSUPPLIER"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

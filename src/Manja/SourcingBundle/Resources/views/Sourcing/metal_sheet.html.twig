@@ -1,0 +1,41 @@
+{% extends "ManjaSourcingBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="span8 well">
+    <table class="table table-bordered table-condensed table-stripped">
+        <tr>
+            <td>ID </td>          
+            <td>{{ item.getIdSrcMetal() }}</td> 
+        </tr>
+        <tr>
+            <td>Metal</td>          
+            <td>{{ item.getMetal() }}</td> 
+        </tr>
+        <tr>
+            <td>Color</td>          
+            <td>{{ item.getMetalColor() }}</td> 
+        </tr>
+        <tr>
+            <td>Purity</td>          
+            <td>{{ item.getPurityPercent() }}%</td> 
+        </tr>
+        <tr>
+            <td>Volumic Mass</td>          
+            <td>{{ item.getVolumicMass() }}</td> 
+        </tr>
+        <tr>
+            <td>Price per gram</td>          
+            <td>{{ item.getPriceGram().getPrice() }}</td> 
+        </tr>
+        <tr>
+            <td>Company</td> 
+            <td>{{ item.getFurnisher().getCompany() }}</td> 
+        </tr>
+        <tr>
+        </tr>
+    </table>
+    </div>
+    <div class="span4 well">
+        <img src="{{ asset('bundles/manjasourcing/images/hyene-1257455213.jpg') }}" alt="" />
+    </div>
+{% endblock %}

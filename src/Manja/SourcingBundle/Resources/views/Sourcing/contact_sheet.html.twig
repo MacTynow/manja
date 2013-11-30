@@ -1,0 +1,29 @@
+{% extends "ManjaSourcingBundle::layout.html.twig" %}
+
+{% block title %}
+    Supplier - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <div class="span8 well">
+    <table class="table table-bordered table-condensed table-stripped">
+        <tr>
+            <td>ID </td>          
+            <td>{{ item.getIdcontact() }}</td> 
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{ item.getTitle() }} {{ item.getFirstName() }} {{ item.getLastName() }}</td> 
+        </tr>
+        {#<tr>
+            <td>Company</td> 
+            <td>{{ item.getCompany() }}</td> 
+        </tr>#}
+        <tr>
+        </tr>
+    </table>
+    </div>
+    <div class="span4 well">
+        <img src="{{ asset('bundles/manjasourcing/images/hyene-1257455213.jpg') }}" alt="" />
+    </div>
+{% endblock %}

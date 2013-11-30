@@ -13,13 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Supplier
 {
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="idSUPPLIER", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="Company", type="string", length=45, nullable=false)
      */
-    private $idsupplier;
+    private $company;
 
     /**
      * @var string
@@ -99,17 +97,16 @@ class Supplier
     private $suppliesTask;
 
     /**
-     * @var \Contact
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Contact", cascade={"persist"})
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Contact", referencedColumnName="idCONTACT")
-     * })
+     * @ORM\Column(name="idSUPPLIER", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $contact;
+    private $idsupplier;
 
     /**
-     * @var \ContactRank
+     * @var ContactRank
      *
      * @ORM\ManyToOne(targetEntity="ContactRank", cascade={"persist"})
      * @ORM\JoinColumns({
@@ -121,13 +118,26 @@ class Supplier
 
 
     /**
-     * Get idsupplier
+     * Set company
      *
-     * @return integer 
+     * @param string $company
+     * @return Supplier
      */
-    public function getIdsupplier()
+    public function setCompany($company)
     {
-        return $this->idsupplier;
+        $this->company = $company;
+    
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return string 
+     */
+    public function getCompany()
+    {
+        return $this->company;
     }
 
     /**
@@ -384,35 +394,22 @@ class Supplier
     }
 
     /**
-     * Set contact
+     * Get idsupplier
      *
-     * @param \Manja\SourcingBundle\Entity\Contact $contact
-     * @return Supplier
+     * @return integer 
      */
-    public function setContact(\Manja\SourcingBundle\Entity\Contact $contact = null)
+    public function getIdsupplier()
     {
-        $this->contact = $contact;
-    
-        return $this;
-    }
-
-    /**
-     * Get contact
-     *
-     * @return \Manja\SourcingBundle\Entity\Contact 
-     */
-    public function getContact()
-    {
-        return $this->contact;
+        return $this->idsupplier;
     }
 
     /**
      * Set rank
      *
-     * @param \Manja\SourcingBundle\Entity\ContactRank $rank
+     * @param ContactRank $rank
      * @return Supplier
      */
-    public function setRank(\Manja\SourcingBundle\Entity\ContactRank $rank = null)
+    public function setRank(ContactRank $rank = null)
     {
         $this->rank = $rank;
     
@@ -422,18 +419,10 @@ class Supplier
     /**
      * Get rank
      *
-     * @return \Manja\SourcingBundle\Entity\ContactRank 
+     * @return ContactRank 
      */
     public function getRank()
     {
         return $this->rank;
     }
-
-    /* Get company and names from supplier entity */
-    public function getCompany()
-    {
-        return $this->getContact()->getCompany();
-        //return $this->getContact()->getFirstName() .' '. $this->getContact()->getLastName() .' ('. $this->getContact()->getCompany() .')';
-    }
-
 }

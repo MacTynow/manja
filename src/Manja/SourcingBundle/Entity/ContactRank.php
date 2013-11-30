@@ -13,32 +13,22 @@ use Doctrine\ORM\Mapping as ORM;
 class ContactRank
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idCONTACT_RANK", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idcontactRank;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Rank", type="string", length=45, nullable=false)
      */
     private $rank;
 
-
-
     /**
-     * Get idcontactRank
+     * @var integer
      *
-     * @return integer 
+     * @ORM\Column(name="idCONTACT_RANK", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getIdcontactRank()
-    {
-        return $this->idcontactRank;
-    }
+    private $idcontactRank;
+
+
 
     /**
      * Set rank
@@ -61,5 +51,15 @@ class ContactRank
     public function getRank()
     {
         return $this->rank;
+    }
+
+    /**
+     * Get idcontactRank
+     *
+     * @return integer 
+     */
+    public function getIdcontactRank()
+    {
+        return $this->idcontactRank;
     }
 }

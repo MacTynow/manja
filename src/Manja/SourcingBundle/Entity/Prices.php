@@ -15,15 +15,6 @@ class Prices
     /**
      * @var integer
      *
-     * @ORM\Column(name="idPRICES", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idprices;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="price", type="integer", nullable=false)
      */
     private $price;
@@ -49,23 +40,16 @@ class Prices
      */
     private $current;
 
-
-
-    public function __construct()
-    {
-        $this->dateBegin    = new \Datetime;
-        $this->current      = true;
-    }
-
     /**
-     * Get idprices
+     * @var integer
      *
-     * @return integer 
+     * @ORM\Column(name="idPRICES", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getIdprices()
-    {
-        return $this->idprices;
-    }
+    private $idprices;
+
+
 
     /**
      * Set price
@@ -157,5 +141,15 @@ class Prices
     public function getCurrent()
     {
         return $this->current;
+    }
+
+    /**
+     * Get idprices
+     *
+     * @return integer 
+     */
+    public function getIdprices()
+    {
+        return $this->idprices;
     }
 }

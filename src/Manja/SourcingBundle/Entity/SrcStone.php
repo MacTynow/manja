@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class SrcStone
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idSTONE", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idstone;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Type", type="string", length=45, nullable=false)
@@ -134,19 +125,18 @@ class SrcStone
     private $picturePath;
 
     /**
-     * @var \Supplier
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Supplier")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
-     * })
+     * @ORM\Column(name="idSTONE", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $furnisher;
+    private $idstone;
 
     /**
      * @var \StoneVariety
      *
-     * @ORM\ManyToOne(targetEntity="StoneVariety")
+     * @ORM\ManyToOne(targetEntity="StoneVariety", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Variety", referencedColumnName="idSTONE_VARIETY")
      * })
@@ -156,7 +146,17 @@ class SrcStone
     /**
      * @var \Prices
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
+     * })
+     */
+    private $pricePiece;
+
+    /**
+     * @var \Prices
+     *
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Price_ct", referencedColumnName="idPRICES")
      * })
@@ -164,26 +164,16 @@ class SrcStone
     private $priceCt;
 
     /**
-     * @var \Prices
+     * @var \Supplier
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="Supplier", cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
+     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
      * })
      */
-    private $pricePiece;
+    private $furnisher;
 
 
-
-    /**
-     * Get idstone
-     *
-     * @return integer 
-     */
-    public function getIdstone()
-    {
-        return $this->idstone;
-    }
 
     /**
      * Set type
@@ -554,35 +544,22 @@ class SrcStone
     }
 
     /**
-     * Set furnisher
+     * Get idstone
      *
-     * @param \Manja\SourcingBundle\Entity\Supplier $furnisher
-     * @return SrcStone
+     * @return integer 
      */
-    public function setFurnisher(\Manja\SourcingBundle\Entity\Supplier $furnisher = null)
+    public function getIdstone()
     {
-        $this->furnisher = $furnisher;
-    
-        return $this;
-    }
-
-    /**
-     * Get furnisher
-     *
-     * @return \Manja\SourcingBundle\Entity\Supplier 
-     */
-    public function getFurnisher()
-    {
-        return $this->furnisher;
+        return $this->idstone;
     }
 
     /**
      * Set variety
      *
-     * @param \Manja\SourcingBundle\Entity\StoneVariety $variety
+     * @paramStoneVariety $variety
      * @return SrcStone
      */
-    public function setVariety(\Manja\SourcingBundle\Entity\StoneVariety $variety = null)
+    public function setVariety(StoneVariety $variety = null)
     {
         $this->variety = $variety;
     
@@ -592,7 +569,7 @@ class SrcStone
     /**
      * Get variety
      *
-     * @return \Manja\SourcingBundle\Entity\StoneVariety 
+     * @return StoneVariety 
      */
     public function getVariety()
     {
@@ -600,35 +577,12 @@ class SrcStone
     }
 
     /**
-     * Set priceCt
-     *
-     * @param \Manja\SourcingBundle\Entity\Prices $priceCt
-     * @return SrcStone
-     */
-    public function setPriceCt(\Manja\SourcingBundle\Entity\Prices $priceCt = null)
-    {
-        $this->priceCt = $priceCt;
-    
-        return $this;
-    }
-
-    /**
-     * Get priceCt
-     *
-     * @return \Manja\SourcingBundle\Entity\Prices 
-     */
-    public function getPriceCt()
-    {
-        return $this->priceCt;
-    }
-
-    /**
      * Set pricePiece
      *
-     * @param \Manja\SourcingBundle\Entity\Prices $pricePiece
+     * @param Prices $pricePiece
      * @return SrcStone
      */
-    public function setPricePiece(\Manja\SourcingBundle\Entity\Prices $pricePiece = null)
+    public function setPricePiece(Prices $pricePiece = null)
     {
         $this->pricePiece = $pricePiece;
     
@@ -638,10 +592,56 @@ class SrcStone
     /**
      * Get pricePiece
      *
-     * @return \Manja\SourcingBundle\Entity\Prices 
+     * @return Prices 
      */
     public function getPricePiece()
     {
         return $this->pricePiece;
+    }
+
+    /**
+     * Set priceCt
+     *
+     * @param Prices $priceCt
+     * @return SrcStone
+     */
+    public function setPriceCt(Prices $priceCt = null)
+    {
+        $this->priceCt = $priceCt;
+    
+        return $this;
+    }
+
+    /**
+     * Get priceCt
+     *
+     * @return Prices 
+     */
+    public function getPriceCt()
+    {
+        return $this->priceCt;
+    }
+
+    /**
+     * Set furnisher
+     *
+     * @param Supplier $furnisher
+     * @return SrcStone
+     */
+    public function setFurnisher(Supplier $furnisher = null)
+    {
+        $this->furnisher = $furnisher;
+    
+        return $this;
+    }
+
+    /**
+     * Get furnisher
+     *
+     * @return Supplier 
+     */
+    public function getFurnisher()
+    {
+        return $this->furnisher;
     }
 }

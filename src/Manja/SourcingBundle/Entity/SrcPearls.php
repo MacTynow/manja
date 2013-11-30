@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class SrcPearls
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idSRC_PEARLS", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idsrcPearls;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Variety", type="string", length=45, nullable=false)
@@ -127,9 +118,18 @@ class SrcPearls
     private $picturePath;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="idSRC_PEARLS", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsrcPearls;
+
+    /**
      * @var \Supplier
      *
-     * @ORM\ManyToOne(targetEntity="Supplier")
+     * @ORM\ManyToOne(targetEntity="Supplier", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
      * })
@@ -139,7 +139,7 @@ class SrcPearls
     /**
      * @var \Prices
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
      * })
@@ -147,16 +147,6 @@ class SrcPearls
     private $pricePiece;
 
 
-
-    /**
-     * Get idsrcPearls
-     *
-     * @return integer 
-     */
-    public function getIdsrcPearls()
-    {
-        return $this->idsrcPearls;
-    }
 
     /**
      * Set variety
@@ -504,12 +494,22 @@ class SrcPearls
     }
 
     /**
+     * Get idsrcPearls
+     *
+     * @return integer 
+     */
+    public function getIdsrcPearls()
+    {
+        return $this->idsrcPearls;
+    }
+
+    /**
      * Set furnisher
      *
-     * @param \Manja\SourcingBundle\Entity\Supplier $furnisher
+     * @param Supplier $furnisher
      * @return SrcPearls
      */
-    public function setFurnisher(\Manja\SourcingBundle\Entity\Supplier $furnisher = null)
+    public function setFurnisher(Supplier $furnisher = null)
     {
         $this->furnisher = $furnisher;
     
@@ -519,7 +519,7 @@ class SrcPearls
     /**
      * Get furnisher
      *
-     * @return \Manja\SourcingBundle\Entity\Supplier 
+     * @return Supplier 
      */
     public function getFurnisher()
     {
@@ -529,10 +529,10 @@ class SrcPearls
     /**
      * Set pricePiece
      *
-     * @param \Manja\SourcingBundle\Entity\Prices $pricePiece
+     * @param Prices $pricePiece
      * @return SrcPearls
      */
-    public function setPricePiece(\Manja\SourcingBundle\Entity\Prices $pricePiece = null)
+    public function setPricePiece(Prices $pricePiece = null)
     {
         $this->pricePiece = $pricePiece;
     
@@ -542,7 +542,7 @@ class SrcPearls
     /**
      * Get pricePiece
      *
-     * @return \Manja\SourcingBundle\Entity\Prices 
+     * @return Prices 
      */
     public function getPricePiece()
     {

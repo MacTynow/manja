@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class StoneVariety
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idSTONE_VARIETY", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idstoneVariety;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Variety", type="string", length=45, nullable=false)
@@ -42,17 +33,16 @@ class StoneVariety
      */
     private $sg;
 
-
-
     /**
-     * Get idstoneVariety
+     * @var integer
      *
-     * @return integer 
+     * @ORM\Column(name="idSTONE_VARIETY", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getIdstoneVariety()
-    {
-        return $this->idstoneVariety;
-    }
+    private $idstoneVariety;
+
+
 
     /**
      * Set variety
@@ -121,5 +111,15 @@ class StoneVariety
     public function getSg()
     {
         return $this->sg;
+    }
+
+    /**
+     * Get idstoneVariety
+     *
+     * @return integer 
+     */
+    public function getIdstoneVariety()
+    {
+        return $this->idstoneVariety;
     }
 }

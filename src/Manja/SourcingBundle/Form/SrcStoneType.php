@@ -30,9 +30,11 @@ class SrcStoneType extends AbstractType
             ->add('sizeHeight',     'text')
             ->add('weightPiece',    'text')
             ->add('minQtyBuy',      'text')
-            ->add('variety',        'text')
-            ->add('priceCt',        'text')
-            ->add('pricePiece',     'text')
+            ->add('variety',        'entity', array('class' => 'ManjaSourcingBundle:StoneVariety',
+                                                    'property' => 'variety',
+                                                    'multiple' => false))
+            ->add('priceCt',        new PricesType())
+            ->add('pricePiece',     new PricesType())
             ->add('furnisher',      'entity', array('class' => 'ManjaSourcingBundle:Supplier',
                                                     'property' => 'company',
                                                     'multiple' => false))

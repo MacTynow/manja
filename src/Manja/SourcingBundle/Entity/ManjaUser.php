@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class ManjaUser
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, nullable=false)
@@ -133,17 +124,16 @@ class ManjaUser
      */
     private $credentialsExpireAt;
 
-
-
     /**
-     * Get id
+     * @var integer
      *
-     * @return integer 
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $id;
+
+
 
     /**
      * Set username
@@ -511,5 +501,15 @@ class ManjaUser
     public function getCredentialsExpireAt()
     {
         return $this->credentialsExpireAt;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

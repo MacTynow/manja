@@ -6,54 +6,26 @@ manja_sourcing_prices:
     pattern:  /sourcing/prices
     defaults: { _controller: ManjaSourcingBundle:Manja:listPrices }
 
-manja_sourcing_list_suppliers:
-    pattern:  /sourcing/list/suppliers
-    defaults: { _controller: ManjaSourcingBundle:Manja:listSuppliers }
+manja_sourcing_list:
+    pattern:  /sourcing/list/{data}
+    defaults: { _controller: ManjaSourcingBundle:Manja:list }
+    requirements: 
+        data: accessorie_length|accessorie_piece|chain|contact|diamond|finding|metal|pearl|stone|stone_variety|supplier
 
-manja_sourcing_add_supplier:
-    pattern:  /sourcing/add/supplier
-    defaults: { _controller: ManjaSourcingBundle:Manja:addSupplier }
+manja_sourcing_add:
+    pattern:  /sourcing/add/{data}
+    defaults: { _controller: ManjaSourcingBundle:Manja:add }
+    requirements: 
+        data: accessorie_length|accessorie_piece|chain|contact|diamond|finding|metal|pearl|stone|supplier
 
-manja_sourcing_list_metals:
-    pattern:  /sourcing/list/metal
-    defaults: { _controller: ManjaSourcingBundle:Manja:listMetals }
+manja_sourcing_remove:
+    pattern:  /sourcing/remove/{category}/{id}
+    defaults: { _controller: ManjaSourcingBundle:Manja:remove }
+    requirements: 
+        data: accessorie_length|accessorie_piece|chain|contact|diamond|finding|metal|pearl|stone|supplier
 
-manja_sourcing_add_metal:
-    pattern:  /sourcing/add/metal
-    defaults: { _controller: ManjaSourcingBundle:Manja:addMetal }
-
-manja_sourcing_list_stones:
-    pattern:  /sourcing/list/stones
-    defaults: { _controller: ManjaSourcingBundle:Manja:listStones }
-
-manja_sourcing_add_stone:
-    pattern:  /sourcing/add/stone
-    defaults: { _controller: ManjaSourcingBundle:Manja:addStone }
-
-manja_sourcing_list_diamonds:
-    pattern:  /sourcing/list/diamonds
-    defaults: { _controller: ManjaSourcingBundle:Manja:listDiamonds }
-
-manja_sourcing_add_diamond:
-    pattern:  /sourcing/add/diamond
-    defaults: { _controller: ManjaSourcingBundle:Manja:addDiamond }
-
-manja_sourcing_list_pearls:
-    pattern:  /sourcing/list/pearls
-    defaults: { _controller: ManjaSourcingBundle:Manja:listPearls }
-
-manja_sourcing_list_findings:
-    pattern:  /sourcing/list/findings
-    defaults: { _controller: ManjaSourcingBundle:Manja:listFindings }
-
-manja_sourcing_list_chains:
-    pattern:  /sourcing/list/chains
-    defaults: { _controller: ManjaSourcingBundle:Manja:listChains }
-
-manja_sourcing_list_accessories_length:
-    pattern:  /sourcing/list/accessories_length
-    defaults: { _controller: ManjaSourcingBundle:Manja:listAccessoriesLength }
-
-manja_sourcing_list_accessories_piece:
-    pattern:  /sourcing/list/accessories_piece
-    defaults: { _controller: ManjaSourcingBundle:Manja:listAccessoriesPiece }
+manja_sourcing_item_sheet:
+    pattern: /sourcing/itemsheet/{category}/{id}
+    defaults: { _controller: ManjaSourcingBundle:Manja:itemSheet }
+    requirements:
+        category: accessorie_length|accessorie_piece|chain|contact|diamond|finding|metal|pearl|stone|supplier

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Product" table="PRODUCT">
+    <id name="idproduct" type="integer" column="idPRODUCT">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="45" nullable="false"/>
+    <many-to-one field="srcFinding" target-entity="SrcFinding">
+      <join-columns>
+        <join-column name="src_finding" referenced-column-name="idSRC_FINDING"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="srcMetal" target-entity="SrcMetal">
+      <join-columns>
+        <join-column name="src_metal" referenced-column-name="idSRC_METAL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="srcPearls" target-entity="SrcPearls">
+      <join-columns>
+        <join-column name="src_pearls" referenced-column-name="idSRC_PEARLS"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="srcStone" target-entity="SrcStone">
+      <join-columns>
+        <join-column name="src_stone" referenced-column-name="idSTONE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="srcDiams" target-entity="SrcDiams">
+      <join-columns>
+        <join-column name="src_diams" referenced-column-name="idSRC_DIAMS"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="srcChains" target-entity="SrcChains">
+      <join-columns>
+        <join-column name="src_chains" referenced-column-name="idSRC_CHAINS"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="reqStone" target-entity="ReqStone">
+      <join-columns>
+        <join-column name="req_stone" referenced-column-name="idREQ_STONE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="srcAccLength" target-entity="SrcAccLength">
+      <join-columns>
+        <join-column name="src_acc_length" referenced-column-name="idSRC_ACC_LENGTH"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="srcAccPiece" target-entity="SrcAccPiece">
+      <join-columns>
+        <join-column name="src_acc_piece" referenced-column-name="idSRC_ACC_PIECE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="reqMetal" target-entity="ReqMetal">
+      <join-columns>
+        <join-column name="req_metal" referenced-column-name="idREQ_METAL"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

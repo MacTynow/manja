@@ -1,0 +1,66 @@
+{% extends "ManjaSourcingBundle::layout.html.twig" %}
+
+{% block title %}
+    Suppliers - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <a href="{{ path('manja_sourcing_add', { 'data': "supplier" }) }}" class="btn">Add a supplier</a>
+
+    <hr/>
+
+    {% include "ManjaSourcingBundle:Sourcing:sourcing_list.html.twig" %}
+
+    <table id="table1" class="table table-bordered table-striped table-condensed display">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Company</th>
+            <th>Rank</th>
+            {#<th>Contacts</th>#}
+            <th>Product Category</th>            
+            <th>Supplies</th>            
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in items %} 
+        <tr>
+            <td>
+            <div class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ item.getIdSupplier() }} <span class="caret"></span> </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Edit</a></li>
+                    <li><a href="{{ path('manja_sourcing_remove', { 'category': "supplier", 'id': item.getIdSupplier() }) }}">Delete</a></li>
+                </ul>
+            </div>
+            </td>
+            <td>
+            <div class="modal hide fade" id="infos">
+                <div class="modal-header"> <a class="close" data-dismiss="modal">×</a>
+                    <h3>Details</h3>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer"> <a class="btn btn-info" data-dismiss="modal">Close</a> </div>
+            </div>
+            <a data-toggle="modal" href="{{ path('manja_sourcing_item_sheet', { 'category': "supplier", 'id': item.getIdsupplier() }) }}" data-target="#infos">{{ item.getCompany() }}</a>
+            </td>
+            <td>{{ item.getRank().getRank() }}</td>
+            {#<td><a href="{{ path('manja_sourcing_item_sheet', { 'category': "contact", 'id': item.getContact.getIdcontact() }) }}">{{ item.getContact().getTitle() }} {{ item.getContact().getFirstName() }} {{ item.getContact().getLastName() }}</a></td>#}
+            <td>{{ item.getProductCategory() }}</td>
+            <td>
+                {% if item.getSuppliesDiamond() == 1 %} Diamonds<br/> {% endif %}                
+                {% if item.getSuppliesStones() == 1 %} Stones<br/> {% endif %}                
+                {% if item.getSuppliesPearls() == 1 %} Pearls<br/> {% endif %}                
+                {% if item.getSuppliesMetal() == 1 %} Metal<br/> {% endif %}
+                {% if item.getSuppliesChains() == 1 %} Chains<br/> {% endif %}
+                {% if item.getSuppliesAccLength() == 1 %} Accessories/Length<br/> {% endif %}
+                {% if item.getSuppliesAccPiece() == 1 %} Accessories/Piece<br/> {% endif %}
+                {% if item.getSuppliesFindings() == 1 %} Findings<br/> {% endif %}
+                {% if item.getSuppliesTask() == 1 %} Tasks<br/> {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock %}

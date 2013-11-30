@@ -1,0 +1,41 @@
+{% extends "ManjaSourcingBundle::layout.html.twig" %}
+
+{% block title %}
+    Stone Varieties - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    {#<a href="{{ path('manja_sourcing_add', { 'data': "stone" }) }}" class="btn">Add stone</a>#}
+
+    <hr/>
+
+    {% include "ManjaSourcingBundle:Sourcing:sourcing_list.html.twig" %}
+
+    <table id="table1" class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Variety</th>
+            <th>Family</th>
+            <th>SG</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>
+            <div class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ item.getIdstoneVariety() }} <span class="caret"></span> </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Edit</a></li>
+                    <li><a href="{{ path('manja_sourcing_remove', { 'category': "item", 'id': item.getIdstoneVariety() }) }}">Delete</a></li>
+                </ul>
+            </div>
+            </td>
+            <td>{{ item.getVariety() }}</td>
+            <td>{{ item.getFamily() }}</td>
+            <td>{{ item.getSG() }}</td>
+        </tr>
+    {% endfor %}
+    </tbody> 
+    </table>
+ {% endblock %}

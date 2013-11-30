@@ -15,7 +15,7 @@ class ReqMetal
     /**
      * @var integer
      *
-     * @ORM\Column(name="idREQ_METAL", type="integer", nullable=false)
+     * @ORM\Column(name="idREQ_METAL", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */

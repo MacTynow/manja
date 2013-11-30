@@ -13,32 +13,22 @@ use Doctrine\ORM\Mapping as ORM;
 class FindingType
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idFINDING_TYPE", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idfindingType;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Type", type="string", length=45, nullable=false)
      */
     private $type;
 
-
-
     /**
-     * Get idfindingType
+     * @var integer
      *
-     * @return integer 
+     * @ORM\Column(name="idFINDING_TYPE", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getIdfindingType()
-    {
-        return $this->idfindingType;
-    }
+    private $idfindingType;
+
+
 
     /**
      * Set type
@@ -61,5 +51,15 @@ class FindingType
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Get idfindingType
+     *
+     * @return integer 
+     */
+    public function getIdfindingType()
+    {
+        return $this->idfindingType;
     }
 }

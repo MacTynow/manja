@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class SrcAccLength
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idSRC_ACC_LENGTH", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idsrcAccLength;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Type", type="string", length=45, nullable=false)
@@ -106,9 +97,18 @@ class SrcAccLength
     private $minQtyBuy;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="idSRC_ACC_LENGTH", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsrcAccLength;
+
+    /**
      * @var \Supplier
      *
-     * @ORM\ManyToOne(targetEntity="Supplier")
+     * @ORM\ManyToOne(targetEntity="Supplier", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
      * })
@@ -118,17 +118,17 @@ class SrcAccLength
     /**
      * @var \Prices
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Price_gram", referencedColumnName="idPRICES")
+     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
      * })
      */
-    private $priceGram;
+    private $pricePiece;
 
     /**
      * @var \Prices
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Price_meter", referencedColumnName="idPRICES")
      * })
@@ -138,24 +138,14 @@ class SrcAccLength
     /**
      * @var \Prices
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
+     *   @ORM\JoinColumn(name="Price_gram", referencedColumnName="idPRICES")
      * })
      */
-    private $pricePiece;
+    private $priceGram;
 
 
-
-    /**
-     * Get idsrcAccLength
-     *
-     * @return integer 
-     */
-    public function getIdsrcAccLength()
-    {
-        return $this->idsrcAccLength;
-    }
 
     /**
      * Set type
@@ -434,12 +424,22 @@ class SrcAccLength
     }
 
     /**
+     * Get idsrcAccLength
+     *
+     * @return integer 
+     */
+    public function getIdsrcAccLength()
+    {
+        return $this->idsrcAccLength;
+    }
+
+    /**
      * Set furnisher
      *
-     * @param \Manja\SourcingBundle\Entity\Supplier $furnisher
+     * @param Supplier $furnisher
      * @return SrcAccLength
      */
-    public function setFurnisher(\Manja\SourcingBundle\Entity\Supplier $furnisher = null)
+    public function setFurnisher(Supplier $furnisher = null)
     {
         $this->furnisher = $furnisher;
     
@@ -449,7 +449,7 @@ class SrcAccLength
     /**
      * Get furnisher
      *
-     * @return \Manja\SourcingBundle\Entity\Supplier 
+     * @return Supplier 
      */
     public function getFurnisher()
     {
@@ -457,58 +457,12 @@ class SrcAccLength
     }
 
     /**
-     * Set priceGram
-     *
-     * @param \Manja\SourcingBundle\Entity\Prices $priceGram
-     * @return SrcAccLength
-     */
-    public function setPriceGram(\Manja\SourcingBundle\Entity\Prices $priceGram = null)
-    {
-        $this->priceGram = $priceGram;
-    
-        return $this;
-    }
-
-    /**
-     * Get priceGram
-     *
-     * @return \Manja\SourcingBundle\Entity\Prices 
-     */
-    public function getPriceGram()
-    {
-        return $this->priceGram;
-    }
-
-    /**
-     * Set priceMeter
-     *
-     * @param \Manja\SourcingBundle\Entity\Prices $priceMeter
-     * @return SrcAccLength
-     */
-    public function setPriceMeter(\Manja\SourcingBundle\Entity\Prices $priceMeter = null)
-    {
-        $this->priceMeter = $priceMeter;
-    
-        return $this;
-    }
-
-    /**
-     * Get priceMeter
-     *
-     * @return \Manja\SourcingBundle\Entity\Prices 
-     */
-    public function getPriceMeter()
-    {
-        return $this->priceMeter;
-    }
-
-    /**
      * Set pricePiece
      *
-     * @param \Manja\SourcingBundle\Entity\Prices $pricePiece
+     * @param Prices $pricePiece
      * @return SrcAccLength
      */
-    public function setPricePiece(\Manja\SourcingBundle\Entity\Prices $pricePiece = null)
+    public function setPricePiece(Prices $pricePiece = null)
     {
         $this->pricePiece = $pricePiece;
     
@@ -518,10 +472,56 @@ class SrcAccLength
     /**
      * Get pricePiece
      *
-     * @return \Manja\SourcingBundle\Entity\Prices 
+     * @return Prices 
      */
     public function getPricePiece()
     {
         return $this->pricePiece;
+    }
+
+    /**
+     * Set priceMeter
+     *
+     * @param Prices $priceMeter
+     * @return SrcAccLength
+     */
+    public function setPriceMeter(Prices $priceMeter = null)
+    {
+        $this->priceMeter = $priceMeter;
+    
+        return $this;
+    }
+
+    /**
+     * Get priceMeter
+     *
+     * @return Prices 
+     */
+    public function getPriceMeter()
+    {
+        return $this->priceMeter;
+    }
+
+    /**
+     * Set priceGram
+     *
+     * @param Prices $priceGram
+     * @return SrcAccLength
+     */
+    public function setPriceGram(Prices $priceGram = null)
+    {
+        $this->priceGram = $priceGram;
+    
+        return $this;
+    }
+
+    /**
+     * Get priceGram
+     *
+     * @return Prices 
+     */
+    public function getPriceGram()
+    {
+        return $this->priceGram;
     }
 }

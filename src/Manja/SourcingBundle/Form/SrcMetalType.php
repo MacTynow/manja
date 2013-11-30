@@ -20,7 +20,7 @@ class SrcMetalType extends AbstractType
             ->add('purityPercent',  'text')
             ->add('purityName',     'text')
             ->add('volumicMass',    'text')
-            ->add('priceGram',      new PricesType())
+            ->add('priceGram',      new PricesType(), array('required' => false))
             ->add('furnisher',      'entity', array('class' => 'ManjaSourcingBundle:Supplier',
                                                     'property' => 'company',
                                                     'multiple' => false))

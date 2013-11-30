@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class SrcMetal
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idSRC_METAL", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idsrcMetal;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Metal_color", type="string", length=45, nullable=false)
@@ -57,14 +48,13 @@ class SrcMetal
     private $volumicMass;
 
     /**
-     * @var \Supplier
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Supplier", cascade={"persist"})
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
-     * })
+     * @ORM\Column(name="idSRC_METAL", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $furnisher;
+    private $idsrcMetal;
 
     /**
      * @var \Prices
@@ -76,17 +66,17 @@ class SrcMetal
      */
     private $priceGram;
 
-
-
     /**
-     * Get idsrcMetal
+     * @var \Supplier
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="Supplier", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
+     * })
      */
-    public function getIdsrcMetal()
-    {
-        return $this->idsrcMetal;
-    }
+    private $furnisher;
+
+
 
     /**
      * Set metalColor
@@ -204,35 +194,22 @@ class SrcMetal
     }
 
     /**
-     * Set furnisher
+     * Get idsrcMetal
      *
-     * @param \Manja\SourcingBundle\Entity\Supplier $furnisher
-     * @return SrcMetal
+     * @return integer 
      */
-    public function setFurnisher(\Manja\SourcingBundle\Entity\Supplier $furnisher = null)
+    public function getIdsrcMetal()
     {
-        $this->furnisher = $furnisher;
-    
-        return $this;
-    }
-
-    /**
-     * Get furnisher
-     *
-     * @return \Manja\SourcingBundle\Entity\Supplier 
-     */
-    public function getFurnisher()
-    {
-        return $this->furnisher;
+        return $this->idsrcMetal;
     }
 
     /**
      * Set priceGram
      *
-     * @param \Manja\SourcingBundle\Entity\Prices $priceGram
+     * @param Prices $priceGram
      * @return SrcMetal
      */
-    public function setPriceGram(\Manja\SourcingBundle\Entity\Prices $priceGram = null)
+    public function setPriceGram(Prices $priceGram = null)
     {
         $this->priceGram = $priceGram;
     
@@ -242,10 +219,33 @@ class SrcMetal
     /**
      * Get priceGram
      *
-     * @return \Manja\SourcingBundle\Entity\Prices 
+     * @return Prices 
      */
     public function getPriceGram()
     {
         return $this->priceGram;
+    }
+
+    /**
+     * Set furnisher
+     *
+     * @param Supplier $furnisher
+     * @return SrcMetal
+     */
+    public function setFurnisher(Supplier $furnisher = null)
+    {
+        $this->furnisher = $furnisher;
+    
+        return $this;
+    }
+
+    /**
+     * Get furnisher
+     *
+     * @return Supplier 
+     */
+    public function getFurnisher()
+    {
+        return $this->furnisher;
     }
 }

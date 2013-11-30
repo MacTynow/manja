@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class FindingName
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idFINDING_NAME", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idfindingName;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Name", type="string", length=45, nullable=false)
@@ -29,9 +20,18 @@ class FindingName
     private $name;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="idFINDING_NAME", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idfindingName;
+
+    /**
      * @var \FindingType
      *
-     * @ORM\ManyToOne(targetEntity="FindingType")
+     * @ORM\ManyToOne(targetEntity="FindingType", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Type", referencedColumnName="idFINDING_TYPE")
      * })
@@ -39,16 +39,6 @@ class FindingName
     private $type;
 
 
-
-    /**
-     * Get idfindingName
-     *
-     * @return integer 
-     */
-    public function getIdfindingName()
-    {
-        return $this->idfindingName;
-    }
 
     /**
      * Set name
@@ -74,12 +64,22 @@ class FindingName
     }
 
     /**
+     * Get idfindingName
+     *
+     * @return integer 
+     */
+    public function getIdfindingName()
+    {
+        return $this->idfindingName;
+    }
+
+    /**
      * Set type
      *
-     * @param \Manja\SourcingBundle\Entity\FindingType $type
+     * @param FindingType $type
      * @return FindingName
      */
-    public function setType(\Manja\SourcingBundle\Entity\FindingType $type = null)
+    public function setType(FindingType $type = null)
     {
         $this->type = $type;
     
@@ -89,7 +89,7 @@ class FindingName
     /**
      * Get type
      *
-     * @return \Manja\SourcingBundle\Entity\FindingType 
+     * @return FindingType 
      */
     public function getType()
     {

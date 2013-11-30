@@ -27,7 +27,7 @@ class SupplierType extends AbstractType
             ->add('suppliesMetal',      'checkbox', array('required' => false))
             ->add('suppliesTask',       'checkbox', array('required' => false))
             ->add('contact',            'entity',  array('class' => 'ManjaSourcingBundle:Contact',
-                                                         'property' => 'lastname', 
+                                                         'property' => 'Company', 
                                                          'multiple' => false))  
             ->add('rank',               'entity',  array('class' => 'ManjaSourcingBundle:ContactRank',
                                                          'property' => 'rank', 

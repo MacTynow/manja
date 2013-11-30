@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FindingName" table="FINDING_NAME">
+    <id name="idfindingName" type="integer" column="idFINDING_NAME">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="Name" length="45" nullable="false"/>
+    <many-to-one field="type" target-entity="FindingType">
+      <join-columns>
+        <join-column name="Type" referenced-column-name="idFINDING_TYPE"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

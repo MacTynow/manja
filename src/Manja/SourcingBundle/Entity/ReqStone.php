@@ -13,32 +13,22 @@ use Doctrine\ORM\Mapping as ORM;
 class ReqStone
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idREQ_STONE", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idreqStone;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Quantity", type="string", length=45, nullable=false)
      */
     private $quantity;
 
-
-
     /**
-     * Get idreqStone
+     * @var integer
      *
-     * @return integer 
+     * @ORM\Column(name="idREQ_STONE", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getIdreqStone()
-    {
-        return $this->idreqStone;
-    }
+    private $idreqStone;
+
+
 
     /**
      * Set quantity
@@ -61,5 +51,15 @@ class ReqStone
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    /**
+     * Get idreqStone
+     *
+     * @return integer 
+     */
+    public function getIdreqStone()
+    {
+        return $this->idreqStone;
     }
 }

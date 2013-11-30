@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Product
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idPRODUCT", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idproduct;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=45, nullable=false)
@@ -29,19 +20,28 @@ class Product
     private $name;
 
     /**
-     * @var \ReqMetal
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="ReqMetal")
+     * @ORM\Column(name="idPRODUCT", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idproduct;
+
+    /**
+     * @var \SrcFinding
+     *
+     * @ORM\ManyToOne(targetEntity="SrcFinding", cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="req_metal", referencedColumnName="idREQ_METAL")
+     *   @ORM\JoinColumn(name="src_finding", referencedColumnName="idSRC_FINDING")
      * })
      */
-    private $reqMetal;
+    private $srcFinding;
 
     /**
      * @var \SrcMetal
      *
-     * @ORM\ManyToOne(targetEntity="SrcMetal")
+     * @ORM\ManyToOne(targetEntity="SrcMetal", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="src_metal", referencedColumnName="idSRC_METAL")
      * })
@@ -49,14 +49,14 @@ class Product
     private $srcMetal;
 
     /**
-     * @var \ReqStone
+     * @var \SrcPearls
      *
-     * @ORM\ManyToOne(targetEntity="ReqStone")
+     * @ORM\ManyToOne(targetEntity="SrcPearls", cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="req_stone", referencedColumnName="idREQ_STONE")
+     *   @ORM\JoinColumn(name="src_pearls", referencedColumnName="idSRC_PEARLS")
      * })
      */
-    private $reqStone;
+    private $srcPearls;
 
     /**
      * @var \SrcStone
@@ -79,16 +79,6 @@ class Product
     private $srcDiams;
 
     /**
-     * @var \SrcPearls
-     *
-     * @ORM\ManyToOne(targetEntity="SrcPearls")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="src_pearls", referencedColumnName="idSRC_PEARLS")
-     * })
-     */
-    private $srcPearls;
-
-    /**
      * @var \SrcChains
      *
      * @ORM\ManyToOne(targetEntity="SrcChains")
@@ -99,14 +89,14 @@ class Product
     private $srcChains;
 
     /**
-     * @var \SrcFinding
+     * @var \ReqStone
      *
-     * @ORM\ManyToOne(targetEntity="SrcFinding")
+     * @ORM\ManyToOne(targetEntity="ReqStone")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="src_finding", referencedColumnName="idSRC_FINDING")
+     *   @ORM\JoinColumn(name="req_stone", referencedColumnName="idREQ_STONE")
      * })
      */
-    private $srcFinding;
+    private $reqStone;
 
     /**
      * @var \SrcAccLength
@@ -128,17 +118,17 @@ class Product
      */
     private $srcAccPiece;
 
-
-
     /**
-     * Get idproduct
+     * @var \ReqMetal
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="ReqMetal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="req_metal", referencedColumnName="idREQ_METAL")
+     * })
      */
-    public function getIdproduct()
-    {
-        return $this->idproduct;
-    }
+    private $reqMetal;
+
+
 
     /**
      * Set name
@@ -164,173 +154,22 @@ class Product
     }
 
     /**
-     * Set reqMetal
+     * Get idproduct
      *
-     * @param \Manja\SourcingBundle\Entity\ReqMetal $reqMetal
-     * @return Product
+     * @return integer 
      */
-    public function setReqMetal(\Manja\SourcingBundle\Entity\ReqMetal $reqMetal = null)
+    public function getIdproduct()
     {
-        $this->reqMetal = $reqMetal;
-    
-        return $this;
-    }
-
-    /**
-     * Get reqMetal
-     *
-     * @return \Manja\SourcingBundle\Entity\ReqMetal 
-     */
-    public function getReqMetal()
-    {
-        return $this->reqMetal;
-    }
-
-    /**
-     * Set srcMetal
-     *
-     * @param \Manja\SourcingBundle\Entity\SrcMetal $srcMetal
-     * @return Product
-     */
-    public function setSrcMetal(\Manja\SourcingBundle\Entity\SrcMetal $srcMetal = null)
-    {
-        $this->srcMetal = $srcMetal;
-    
-        return $this;
-    }
-
-    /**
-     * Get srcMetal
-     *
-     * @return \Manja\SourcingBundle\Entity\SrcMetal 
-     */
-    public function getSrcMetal()
-    {
-        return $this->srcMetal;
-    }
-
-    /**
-     * Set reqStone
-     *
-     * @param \Manja\SourcingBundle\Entity\ReqStone $reqStone
-     * @return Product
-     */
-    public function setReqStone(\Manja\SourcingBundle\Entity\ReqStone $reqStone = null)
-    {
-        $this->reqStone = $reqStone;
-    
-        return $this;
-    }
-
-    /**
-     * Get reqStone
-     *
-     * @return \Manja\SourcingBundle\Entity\ReqStone 
-     */
-    public function getReqStone()
-    {
-        return $this->reqStone;
-    }
-
-    /**
-     * Set srcStone
-     *
-     * @param \Manja\SourcingBundle\Entity\SrcStone $srcStone
-     * @return Product
-     */
-    public function setSrcStone(\Manja\SourcingBundle\Entity\SrcStone $srcStone = null)
-    {
-        $this->srcStone = $srcStone;
-    
-        return $this;
-    }
-
-    /**
-     * Get srcStone
-     *
-     * @return \Manja\SourcingBundle\Entity\SrcStone 
-     */
-    public function getSrcStone()
-    {
-        return $this->srcStone;
-    }
-
-    /**
-     * Set srcDiams
-     *
-     * @param \Manja\SourcingBundle\Entity\SrcDiams $srcDiams
-     * @return Product
-     */
-    public function setSrcDiams(\Manja\SourcingBundle\Entity\SrcDiams $srcDiams = null)
-    {
-        $this->srcDiams = $srcDiams;
-    
-        return $this;
-    }
-
-    /**
-     * Get srcDiams
-     *
-     * @return \Manja\SourcingBundle\Entity\SrcDiams 
-     */
-    public function getSrcDiams()
-    {
-        return $this->srcDiams;
-    }
-
-    /**
-     * Set srcPearls
-     *
-     * @param \Manja\SourcingBundle\Entity\SrcPearls $srcPearls
-     * @return Product
-     */
-    public function setSrcPearls(\Manja\SourcingBundle\Entity\SrcPearls $srcPearls = null)
-    {
-        $this->srcPearls = $srcPearls;
-    
-        return $this;
-    }
-
-    /**
-     * Get srcPearls
-     *
-     * @return \Manja\SourcingBundle\Entity\SrcPearls 
-     */
-    public function getSrcPearls()
-    {
-        return $this->srcPearls;
-    }
-
-    /**
-     * Set srcChains
-     *
-     * @param \Manja\SourcingBundle\Entity\SrcChains $srcChains
-     * @return Product
-     */
-    public function setSrcChains(\Manja\SourcingBundle\Entity\SrcChains $srcChains = null)
-    {
-        $this->srcChains = $srcChains;
-    
-        return $this;
-    }
-
-    /**
-     * Get srcChains
-     *
-     * @return \Manja\SourcingBundle\Entity\SrcChains 
-     */
-    public function getSrcChains()
-    {
-        return $this->srcChains;
+        return $this->idproduct;
     }
 
     /**
      * Set srcFinding
      *
-     * @param \Manja\SourcingBundle\Entity\SrcFinding $srcFinding
+     * @param SrcFinding $srcFinding
      * @return Product
      */
-    public function setSrcFinding(\Manja\SourcingBundle\Entity\SrcFinding $srcFinding = null)
+    public function setSrcFinding(SrcFinding $srcFinding = null)
     {
         $this->srcFinding = $srcFinding;
     
@@ -340,7 +179,7 @@ class Product
     /**
      * Get srcFinding
      *
-     * @return \Manja\SourcingBundle\Entity\SrcFinding 
+     * @return SrcFinding 
      */
     public function getSrcFinding()
     {
@@ -348,12 +187,150 @@ class Product
     }
 
     /**
-     * Set srcAccLength
+     * Set srcMetal
      *
-     * @param \Manja\SourcingBundle\Entity\SrcAccLength $srcAccLength
+     * @param SrcMetal $srcMetal
      * @return Product
      */
-    public function setSrcAccLength(\Manja\SourcingBundle\Entity\SrcAccLength $srcAccLength = null)
+    public function setSrcMetal(SrcMetal $srcMetal = null)
+    {
+        $this->srcMetal = $srcMetal;
+    
+        return $this;
+    }
+
+    /**
+     * Get srcMetal
+     *
+     * @return SrcMetal 
+     */
+    public function getSrcMetal()
+    {
+        return $this->srcMetal;
+    }
+
+    /**
+     * Set srcPearls
+     *
+     * @param SrcPearls $srcPearls
+     * @return Product
+     */
+    public function setSrcPearls(SrcPearls $srcPearls = null)
+    {
+        $this->srcPearls = $srcPearls;
+    
+        return $this;
+    }
+
+    /**
+     * Get srcPearls
+     *
+     * @return SrcPearls 
+     */
+    public function getSrcPearls()
+    {
+        return $this->srcPearls;
+    }
+
+    /**
+     * Set srcStone
+     *
+     * @param SrcStone $srcStone
+     * @return Product
+     */
+    public function setSrcStone(SrcStone $srcStone = null)
+    {
+        $this->srcStone = $srcStone;
+    
+        return $this;
+    }
+
+    /**
+     * Get srcStone
+     *
+     * @return SrcStone 
+     */
+    public function getSrcStone()
+    {
+        return $this->srcStone;
+    }
+
+    /**
+     * Set srcDiams
+     *
+     * @param SrcDiams $srcDiams
+     * @return Product
+     */
+    public function setSrcDiams(SrcDiams $srcDiams = null)
+    {
+        $this->srcDiams = $srcDiams;
+    
+        return $this;
+    }
+
+    /**
+     * Get srcDiams
+     *
+     * @return SrcDiams 
+     */
+    public function getSrcDiams()
+    {
+        return $this->srcDiams;
+    }
+
+    /**
+     * Set srcChains
+     *
+     * @param SrcChains $srcChains
+     * @return Product
+     */
+    public function setSrcChains(SrcChains $srcChains = null)
+    {
+        $this->srcChains = $srcChains;
+    
+        return $this;
+    }
+
+    /**
+     * Get srcChains
+     *
+     * @return SrcChains 
+     */
+    public function getSrcChains()
+    {
+        return $this->srcChains;
+    }
+
+    /**
+     * Set reqStone
+     *
+     * @param ReqStone $reqStone
+     * @return Product
+     */
+    public function setReqStone(ReqStone $reqStone = null)
+    {
+        $this->reqStone = $reqStone;
+    
+        return $this;
+    }
+
+    /**
+     * Get reqStone
+     *
+     * @return ReqStone 
+     */
+    public function getReqStone()
+    {
+        return $this->reqStone;
+    }
+
+    /**
+     * Set srcAccLength
+     *
+     * @param SrcAccLength $srcAccLength
+     * @return Product
+     */
+    public function setSrcAccLength(SrcAccLength $srcAccLength = null)
     {
         $this->srcAccLength = $srcAccLength;
     
@@ -363,7 +340,7 @@ class Product
     /**
      * Get srcAccLength
      *
-     * @return \Manja\SourcingBundle\Entity\SrcAccLength 
+     * @return SrcAccLength 
      */
     public function getSrcAccLength()
     {
@@ -373,10 +350,10 @@ class Product
     /**
      * Set srcAccPiece
      *
-     * @param \Manja\SourcingBundle\Entity\SrcAccPiece $srcAccPiece
+     * @param SrcAccPiece $srcAccPiece
      * @return Product
      */
-    public function setSrcAccPiece(\Manja\SourcingBundle\Entity\SrcAccPiece $srcAccPiece = null)
+    public function setSrcAccPiece(SrcAccPiece $srcAccPiece = null)
     {
         $this->srcAccPiece = $srcAccPiece;
     
@@ -386,10 +363,33 @@ class Product
     /**
      * Get srcAccPiece
      *
-     * @return \Manja\SourcingBundle\Entity\SrcAccPiece 
+     * @return SrcAccPiece 
      */
     public function getSrcAccPiece()
     {
         return $this->srcAccPiece;
+    }
+
+    /**
+     * Set reqMetal
+     *
+     * @param ReqMetal $reqMetal
+     * @return Product
+     */
+    public function setReqMetal(ReqMetal $reqMetal = null)
+    {
+        $this->reqMetal = $reqMetal;
+    
+        return $this;
+    }
+
+    /**
+     * Get reqMetal
+     *
+     * @return ReqMetal 
+     */
+    public function getReqMetal()
+    {
+        return $this->reqMetal;
     }
 }

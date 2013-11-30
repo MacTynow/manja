@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class SrcChains
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idSRC_CHAINS", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idsrcChains;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Type", type="string", length=45, nullable=false)
@@ -113,29 +104,28 @@ class SrcChains
     private $picturePath;
 
     /**
-     * @var \Supplier
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Supplier")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
-     * })
+     * @ORM\Column(name="idSRC_CHAINS", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $furnisher;
+    private $idsrcChains;
 
     /**
      * @var \Prices
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Price_gram", referencedColumnName="idPRICES")
+     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
      * })
      */
-    private $priceGram;
+    private $pricePiece;
 
     /**
      * @var \Prices
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Price_meter", referencedColumnName="idPRICES")
      * })
@@ -145,24 +135,24 @@ class SrcChains
     /**
      * @var \Prices
      *
-     * @ORM\ManyToOne(targetEntity="Prices")
+     * @ORM\ManyToOne(targetEntity="Prices", cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Price_piece", referencedColumnName="idPRICES")
+     *   @ORM\JoinColumn(name="Price_gram", referencedColumnName="idPRICES")
      * })
      */
-    private $pricePiece;
-
-
+    private $priceGram;
 
     /**
-     * Get idsrcChains
+     * @var \Supplier
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="Supplier", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Furnisher", referencedColumnName="idSUPPLIER")
+     * })
      */
-    public function getIdsrcChains()
-    {
-        return $this->idsrcChains;
-    }
+    private $furnisher;
+
+
 
     /**
      * Set type
@@ -464,81 +454,22 @@ class SrcChains
     }
 
     /**
-     * Set furnisher
+     * Get idsrcChains
      *
-     * @param \Manja\SourcingBundle\Entity\Supplier $furnisher
-     * @return SrcChains
+     * @return integer 
      */
-    public function setFurnisher(\Manja\SourcingBundle\Entity\Supplier $furnisher = null)
+    public function getIdsrcChains()
     {
-        $this->furnisher = $furnisher;
-    
-        return $this;
-    }
-
-    /**
-     * Get furnisher
-     *
-     * @return \Manja\SourcingBundle\Entity\Supplier 
-     */
-    public function getFurnisher()
-    {
-        return $this->furnisher;
-    }
-
-    /**
-     * Set priceGram
-     *
-     * @param \Manja\SourcingBundle\Entity\Prices $priceGram
-     * @return SrcChains
-     */
-    public function setPriceGram(\Manja\SourcingBundle\Entity\Prices $priceGram = null)
-    {
-        $this->priceGram = $priceGram;
-    
-        return $this;
-    }
-
-    /**
-     * Get priceGram
-     *
-     * @return \Manja\SourcingBundle\Entity\Prices 
-     */
-    public function getPriceGram()
-    {
-        return $this->priceGram;
-    }
-
-    /**
-     * Set priceMeter
-     *
-     * @param \Manja\SourcingBundle\Entity\Prices $priceMeter
-     * @return SrcChains
-     */
-    public function setPriceMeter(\Manja\SourcingBundle\Entity\Prices $priceMeter = null)
-    {
-        $this->priceMeter = $priceMeter;
-    
-        return $this;
-    }
-
-    /**
-     * Get priceMeter
-     *
-     * @return \Manja\SourcingBundle\Entity\Prices 
-     */
-    public function getPriceMeter()
-    {
-        return $this->priceMeter;
+        return $this->idsrcChains;
     }
 
     /**
      * Set pricePiece
      *
-     * @param \Manja\SourcingBundle\Entity\Prices $pricePiece
+     * @param Prices $pricePiece
      * @return SrcChains
      */
-    public function setPricePiece(\Manja\SourcingBundle\Entity\Prices $pricePiece = null)
+    public function setPricePiece(Prices $pricePiece = null)
     {
         $this->pricePiece = $pricePiece;
     
@@ -548,10 +479,79 @@ class SrcChains
     /**
      * Get pricePiece
      *
-     * @return \Manja\SourcingBundle\Entity\Prices 
+     * @return Prices 
      */
     public function getPricePiece()
     {
         return $this->pricePiece;
+    }
+
+    /**
+     * Set priceMeter
+     *
+     * @param Prices $priceMeter
+     * @return SrcChains
+     */
+    public function setPriceMeter(Prices $priceMeter = null)
+    {
+        $this->priceMeter = $priceMeter;
+    
+        return $this;
+    }
+
+    /**
+     * Get priceMeter
+     *
+     * @return Prices 
+     */
+    public function getPriceMeter()
+    {
+        return $this->priceMeter;
+    }
+
+    /**
+     * Set priceGram
+     *
+     * @param Prices $priceGram
+     * @return SrcChains
+     */
+    public function setPriceGram(Prices $priceGram = null)
+    {
+        $this->priceGram = $priceGram;
+    
+        return $this;
+    }
+
+    /**
+     * Get priceGram
+     *
+     * @return Prices 
+     */
+    public function getPriceGram()
+    {
+        return $this->priceGram;
+    }
+
+    /**
+     * Set furnisher
+     *
+     * @param Supplier $furnisher
+     * @return SrcChains
+     */
+    public function setFurnisher(Supplier $furnisher = null)
+    {
+        $this->furnisher = $furnisher;
+    
+        return $this;
+    }
+
+    /**
+     * Get furnisher
+     *
+     * @return Supplier 
+     */
+    public function getFurnisher()
+    {
+        return $this->furnisher;
     }
 }

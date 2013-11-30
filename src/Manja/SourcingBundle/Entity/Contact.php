@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Contact
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idCONTACT", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idcontact;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="Title", type="string", length=45, nullable=true)
@@ -48,13 +39,6 @@ class Contact
      * @ORM\Column(name="Last_name", type="string", length=45, nullable=false)
      */
     private $lastName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Company", type="string", length=45, nullable=true)
-     */
-    private $company;
 
     /**
      * @var string
@@ -301,17 +285,26 @@ class Contact
      */
     private $officePhone;
 
-
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idCONTACT", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idcontact;
 
     /**
-     * Get idcontact
+     * @var \Supplier
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="Supplier", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Company", referencedColumnName="idSUPPLIER")
+     * })
      */
-    public function getIdcontact()
-    {
-        return $this->idcontact;
-    }
+    private $company;
+
+
 
     /**
      * Set title
@@ -403,29 +396,6 @@ class Contact
     public function getLastName()
     {
         return $this->lastName;
-    }
-
-    /**
-     * Set company
-     *
-     * @param string $company
-     * @return Contact
-     */
-    public function setCompany($company)
-    {
-        $this->company = $company;
-    
-        return $this;
-    }
-
-    /**
-     * Get company
-     *
-     * @return string 
-     */
-    public function getCompany()
-    {
-        return $this->company;
     }
 
     /**
@@ -1231,5 +1201,38 @@ class Contact
     public function getOfficePhone()
     {
         return $this->officePhone;
+    }
+
+    /**
+     * Get idcontact
+     *
+     * @return integer 
+     */
+    public function getIdcontact()
+    {
+        return $this->idcontact;
+    }
+
+    /**
+     * Set company
+     *
+     * @param Supplier $company
+     * @return Contact
+     */
+    public function setCompany(Supplier $company = null)
+    {
+        $this->company = $company;
+    
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return Supplier 
+     */
+    public function getCompany()
+    {
+        return $this->company;
     }
 }
