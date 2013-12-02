@@ -16,19 +16,18 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
             new Manja\SourcingBundle\ManjaSourcingBundle(),
             new Manja\UserBundle\ManjaUserBundle(),
-            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-            new Sonata\BlockBundle\SonataBlockBundle(),
-            new Sonata\jQueryBundle\SonatajQueryBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Sonata\AdminBundle\SonataAdminBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+ //           new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+ //           new Sonata\BlockBundle\SonataBlockBundle(),
+ //           new Sonata\jQueryBundle\SonatajQueryBundle(),
+ //           new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+ //           new Sonata\AdminBundle\SonataAdminBundle(),
             new Manja\Bundle\StockBundle\ManjaStockBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

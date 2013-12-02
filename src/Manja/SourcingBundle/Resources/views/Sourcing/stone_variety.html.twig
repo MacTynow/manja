@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    {#<a href="{{ path('manja_sourcing_add', { 'data': "stone" }) }}" class="btn">Add stone</a>#}
+    {#<a href="{{ path('manja_sourcing_add', { 'data': "stone" }) }}" class="btn btn-primary" role="button">Add stone</a>#}
 
     <hr/>
 
@@ -24,7 +24,7 @@
     {% for item in items %}
         <tr>
             <td>
-            <div class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ item.getIdstoneVariety() }} <span class="caret"></span> </a>
+            <div class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ item.getIdstoneVariety() }} <col-md- class="caret"></col-md-> </a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Edit</a></li>
                     <li><a href="{{ path('manja_sourcing_remove', { 'category': "item", 'id': item.getIdstoneVariety() }) }}">Delete</a></li>

@@ -11,7 +11,7 @@
 
 {% block checkbox_widget %}
 {% spaceless %}
-    <label  for="{{ id }}" class="checkbox {% if checked %}checked{% endif %}" ><span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />{{ label|trans }}</label>
+    <label  for="{{ id }}" class="checkbox {% if checked %}checked{% endif %}" ><col-md- class="icons"><col-md- class="first-icon fui-checkbox-unchecked"></col-md-><col-md- class="second-icon fui-checkbox-checked"></col-md-></col-md-><input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />{{ label|trans }}</label>
 {% endspaceless %}
 {% endblock checkbox_widget %}
 

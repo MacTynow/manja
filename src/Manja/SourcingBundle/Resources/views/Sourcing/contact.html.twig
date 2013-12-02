@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <a href="{{ path('manja_sourcing_add', { 'data': "contact" }) }}" class="btn">Add a contact</a>
+    <a href="{{ path('manja_sourcing_add', { 'data': "contact" }) }}" class="btn btn-primary" role="button">Add a contact</a>
 
     <hr/>
 
@@ -23,7 +23,7 @@
     {% for item in items %} 
         <tr>
            <td>
-            <div class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ item.getIdContact() }} <span class="caret"></span> </a>
+            <div class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ item.getIdContact() }} <col-md- class="caret"></col-md-> </a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Edit</a></li>
                     <li><a href="{{ path('manja_sourcing_remove', { 'category': "contact", 'id': item.getIdContact() }) }}">Delete</a></li>
@@ -31,13 +31,20 @@
             </div>
             </td>
             <td>
-            <div class="modal hide fade" id="infos">
-                <div class="modal-header"> <a class="close" data-dismiss="modal">×</a>
-                    <h3>Details</h3>
+            <div class="modal fade" id="infos">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header"> 
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h3 class="modal-title">Details</h3>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer"> <a class="btn btn-info" data-dismiss="modal">Close</a> </div>
             </div>
             <a data-toggle="modal" href="{{ path('manja_sourcing_item_sheet', { 'category': "contact", 'id': item.getIdcontact() }) }}" data-target="#infos">{{ item.getTitle() }} {{ item.getFirstName() }} {{ item.getLastName() }}</a>
             </td>

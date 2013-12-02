@@ -72,9 +72,9 @@ fos_user:
     user_class: Manja\UserBundle\Entity\User
 
 # Sonata configuration
-sonata_block:
-    default_contexts: [cms]
-    blocks:
+#sonata_block:
+#    default_contexts: [cms]
+#    blocks:
         # Enable the SonataAdminBundle block
-        sonata.admin.block.admin_list:
-                contexts:   [admin]
+#        sonata.admin.block.admin_list:
+#                contexts:   [admin]

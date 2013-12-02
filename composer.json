@@ -19,11 +19,9 @@
         "sensio/framework-extra-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
-        "friendsofsymfony/user-bundle": "dev-master",
+//        "friendsofsymfony/user-bundle": "master-dev",
         "knplabs/knp-paginator-bundle": "dev-master",
-        "sonata-project/admin-bundle": "dev-master",
-        "sonata-project/doctrine-orm-admin-bundle": "dev-master",
-        "sonata-project/user-bundle": "dev-master"
+        "friendsofsymfony/user-bundle": "master-dev"
     },
     "scripts": {
         "post-install-cmd": [
