@@ -1,29 +1,38 @@
-{% extends "ManjaSourcingBundle::layout.html.twig" %}
-
-{% block title %}
-    Supplier - {{ parent() }}
-{% endblock %}
-
-{% block content %}
-    <div class="col-md-8 well">
-    <table class="table table-bordered table-condensed table-stripped">
-        <tr>
-            <td>ID </td>          
-            <td>{{ item.getIdcontact() }}</td> 
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td>{{ item.getTitle() }} {{ item.getFirstName() }} {{ item.getLastName() }}</td> 
-        </tr>
-        {#<tr>
-            <td>Company</td> 
-            <td>{{ item.getCompany() }}</td> 
-        </tr>#}
-        <tr>
-        </tr>
-    </table>
-    </div>
-    <div class="col-md-4 well">
-        <img src="{{ asset('bundles/manjasourcing/images/hyene-1257455213.jpg') }}" alt="" />
-    </div>
-{% endblock %}
+<body>
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Contact details</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <table class="table table-bordered table-condensed table-stripped">
+                    <tr>
+                        <td>ID </td>          
+                        <td>{{ item.getIdcontact() }}</td> 
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ item.getTitle() }} {{ item.getFirstName() }} {{ item.getLastName() }}</td> 
+                    </tr>
+                    {#<tr>
+                        <td>Company</td> 
+                        <td>{{ item.getCompany() }}</td> 
+                    </tr>#}
+                    <tr>
+                    </tr>
+                    </table>
+                </div>
+                <div class="col-md-4 well well-sm">
+                    <img src="{{ asset('bundles/manjasourcing/images/hyene-1257455213.jpg') }}" class="img-responsive" alt="Contact Photo" />
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->   
+</body>

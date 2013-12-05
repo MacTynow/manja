@@ -1,3 +1,0 @@
-manja_stock_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ManjaStockBundle:Default:index }

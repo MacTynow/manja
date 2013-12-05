@@ -19,7 +19,7 @@
       <parameter key="ManjaSourcingBundle">Manja\SourcingBundle\ManjaSourcingBundle</parameter>
       <parameter key="ManjaUserBundle">Manja\UserBundle\ManjaUserBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
-      <parameter key="ManjaStockBundle">Manja\Bundle\StockBundle\ManjaStockBundle</parameter>
+      <parameter key="ManjaStockBundle">Manja\StockBundle\ManjaStockBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
       <parameter key="SensioGeneratorBundle">Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle</parameter>
@@ -2722,7 +2722,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>529c43a358eff</argument>
+            <argument>52a044c5929a2</argument>
           </service>
         </argument>
       </argument>
@@ -3069,7 +3069,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>529c43a358eff</argument>
+            <argument>52a044c5929a2</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -4058,7 +4058,7 @@
         <argument>FOSUser</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/manja/src/Manja/Bundle/StockBundle/Resources/views</argument>
+        <argument>/var/www/manja/src/Manja/StockBundle/Resources/views</argument>
         <argument>ManjaStock</argument>
       </call>
       <call method="addPath">

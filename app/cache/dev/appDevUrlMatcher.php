@@ -133,9 +133,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // manja_stock_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'manja_stock_homepage')), array (  '_controller' => 'Manja\\Bundle\\StockBundle\\Controller\\DefaultController::indexAction',));
+        // manja_stock
+        if ($pathinfo === '/stock') {
+            return array (  '_controller' => 'Manja\\StockBundle\\Controller\\DefaultController::indexAction',  '_route' => 'manja_stock',);
         }
 
         // manja_sourcing_homepage

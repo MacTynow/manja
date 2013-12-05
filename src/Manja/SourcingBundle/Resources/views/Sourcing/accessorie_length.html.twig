@@ -32,7 +32,7 @@
     {% for item in items %}
         <tr>
             <td>
-            <div class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ item.getIdSrcAccLength() }} <col-md- class="caret"></col-md-> </a>
+            <div class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ item.getIdSrcAccLength() }} <span class="caret"></span> </a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Edit</a></li>
                     <li><a href="{{ path('manja_sourcing_remove', { 'category': "accessorie", 'id': item.getIdSrcAccLength() }) }}">Delete</a></li>
@@ -40,7 +40,77 @@
             </div>
             </td>
             <td>{{ item.getType() }}</td>
-            <td>{{ item.getBasicName() }}</td>
+            <td>
+                <a data-toggle="modal" href="#" data-target="#infos">{{ item.getBasicName() }}</a>
+                <div class="modal fade" id="infos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ item.getBasicName() }}</h4>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <table class="table table-bordered table-condensed table-stripped">
+                                    <tr>
+                                        <td>ID </td>          
+                                        <td>{{ item.getIdSrcAccLength() }}</td> 
+                                    </tr>
+                                    <tr>
+                                        <td>Type</td>
+                                        <td>{{ item.getType() }}</td> 
+                                    </tr>
+                                    <tr>
+                                        <td>Name</td> 
+                                        <td>{{ item.getBasicName() }}</td> 
+                                    </tr>
+                                    <tr>
+                                        <td>Base material</td> 
+                                        <td>{{ item.getBaseMaterial() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Finish</td>
+                                        <td>{{ item.getFinish() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shape</td>
+                                        <td>{{ item.getShape() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sizes</td>
+                                        <td>{{ item.getSize1() }} {{ item.getSize2() }} {{ item.getSizeSection() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Weight /meter</td>
+                                        <td>{{ item.getWeightMeter() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Price /gram</td>
+                                        <td>{{ item.getPriceGram().getPrice() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Price /meter</td>
+                                        <td>{{ item.getPriceMeter().getPrice() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Price /piece</td>
+                                        <td>{{ item.getPricePiece().getPrice() }}</td>
+                                    </tr>
+                                    </table>
+                                </div>
+                                <div class="col-md-4 well well-sm">
+                                    <img src="{{ asset('bundles/manjasourcing/images/hyene-1257455213.jpg') }}" class="img-responsive" alt="Contact Photo" />
+                                </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->   
+                </div>
+            </td>
             <td>{{ item.getBaseMaterial() }}</td>
             <td>{{ item.getFinish() }}</td>
             <td>{{ item.getShape() }}</td>
@@ -50,15 +120,23 @@
             <td>{{ item.getPriceMeter().getPrice() }}</td>
             <td>{{ item.getPricePiece().getPrice() }}</td>
             <td>
-            <div class="modal hide fade" id="infos">
-                <div class="modal-header"> <a class="close" data-dismiss="modal">×</a>
-                    <h3>Details</h3>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer"> <a class="btn btn-info" data-dismiss="modal">Close</a> </div>
-            </div>
-            <a data-toggle="modal" href="{{ path('manja_sourcing_item_sheet', { 'category': "supplier", 'id': item.getFurnisher().getIdsupplier() }) }}" data-target="#infos">{{ item.getFurnisher().getCompany() }}</a>
+                <a data-toggle="modal" href="{{ path('manja_sourcing_item_sheet', { 'category': "supplier", 'id': item.getFurnisher().getIdsupplier() }) }}" data-target="#infos">{{ item.getFurnisher().getCompany() }}</a>
+                <!-- Modal -->
+                <div class="modal fade" id="infos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Supplier details</h4>
+                      </div>
+                      <div class="modal-body">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->               
             </td>
         </tr>
     {% endfor %}

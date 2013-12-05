@@ -1,4 +1,4 @@
-{% extends "ManjaSourcingBundle::layout.html.twig" %}
+  {% extends "ManjaSourcingBundle::layout.html.twig" %}
 
 {% block title %}
     Metals - {{ parent() }}
@@ -27,7 +27,7 @@
     {% for item in items %}
         <tr>
             <td>
-            <div class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ item.getIdSrcMetal() }} <col-md- class="caret"></col-md-> </a>
+            <div class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ item.getIdSrcMetal() }} <span class="caret"></span> </a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Edit</a></li>
                     <li><a href="{{ path('manja_sourcing_remove', { 'category': "metal", 'id': item.getIdSrcMetal() }) }}">Delete</a></li>
@@ -35,14 +35,21 @@
             </div>
             </td>
             <td>
-            <div class="modal hide fade" id="infos">
-                <div class="modal-header"> <a class="close" data-dismiss="modal">×</a>
-                    <h3>Details</h3>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer"> <a class="btn btn-info" data-dismiss="modal">Close</a> </div>
-            </div>
+            <div class="modal fade" id="infos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">{{ item.getIdSrcMetal() }}</h4>
+                  </div>
+                  <div class="modal-body">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->    
             <a data-toggle="modal" href="{{ path('manja_sourcing_item_sheet', { 'category': "metal", 'id': item.getIdSrcMetal() }) }}" data-target="#infos">{{ item.getMetal() }}</a>
             </td>
             <td>{{ item.getMetalColor() }}</td>
@@ -50,19 +57,24 @@
             <td>{{ item.getVolumicMass() }}</td>
             <td>{{ item.getPriceGram().getPrice() }}</td>
             <td>
-            <div class="modal hide fade" id="infos">
-                <div class="modal-header"> <a class="close" data-dismiss="modal">×</a>
-                    <h3>Details</h3>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer"> 
-                    <a class="btn btn-info" data-dismiss="modal">Close</a> 
-                </div>
-            </div>
             <a data-toggle="modal" href="{{ path('manja_sourcing_item_sheet', { 'category': "supplier", 'id': item.getFurnisher().getIdsupplier() }) }}" data-target="#infos">{{ item.getFurnisher().getCompany() }}</a>
+            <div class="modal fade" id="infos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Supplier details</h4>
+                  </div>
+                  <div class="modal-body">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->    
+            </div>
             </td>
-
         </tr>
     {% endfor %}
     </tbody> 
