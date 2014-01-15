@@ -1,0 +1,3 @@
+manja_stock:
+    pattern:  /stock
+    defaults: { _controller: ManjaStockBundle:Default:index }

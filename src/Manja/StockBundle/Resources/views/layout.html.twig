@@ -1,0 +1,22 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    DB - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+        {{ parent() }}
+
+        <div class="row">            
+            <div id="content" class="col-md-12">
+                {% block content %}
+                {% endblock %}
+                
+                {% block form_content %}
+                {% endblock %}
+            </div>
+        </div>
+        
+        <hr>
+{% endblock %}

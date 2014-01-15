@@ -1,0 +1,29 @@
+{% extends "ManjaStockBundle::layout.html.twig" %}
+
+
+{% block title %}
+    Stock - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+{% include "ManjaSourcingBundle:Sourcing:sourcing_list.html.twig" %}
+
+    <table id="table1" class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Item</th>
+            <th>Number</th>           
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>{{ item.getId() }}</td>
+            <td>{{ item.getCategoryId().getCategory () }}</td>
+            <td>{{ item.getNumber() }}</td>
+        </tr>
+    {% endfor %}
+    </tbody> 
+    </table>
+ {% endblock %}
