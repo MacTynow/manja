@@ -13,6 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 class SrcFinding
 {
     /**
+     * @var \itemId
+     *
+     * @ORM\ManyToOne(targetEntity="Items", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="itemId", referencedColumnName="id")
+     * })
+     */
+    private $itemId;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="Version", type="string", length=45, nullable=true)
@@ -493,5 +503,28 @@ class SrcFinding
     public function getFurnisher()
     {
         return $this->furnisher;
+    }
+
+    /**
+     * Set itemId
+     *
+     * @param \Manja\SourcingBundle\Entity\Items $itemId
+     * @return SrcFinding
+     */
+    public function setItemId(\Manja\SourcingBundle\Entity\Items $itemId = null)
+    {
+        $this->itemId = $itemId;
+    
+        return $this;
+    }
+
+    /**
+     * Get itemId
+     *
+     * @return \Manja\SourcingBundle\Entity\Items 
+     */
+    public function getItemId()
+    {
+        return $this->itemId;
     }
 }
